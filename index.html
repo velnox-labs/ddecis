@@ -202,6 +202,77 @@
   <p class="text-xs text-navy-400 mt-3"><i class="fa-solid fa-circle-info mr-1"></i>Fee figures shown are indicative. Contact the school office for admission-specific details.</p>
 </section>
 
+<!-- ============ GALLERY (admin-managed carousel) ============ -->
+<!-- Stays hidden when the admin hasn't added any photos yet. -->
+<section id="gallerySection" class="hidden bg-white border-y border-navy-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+    <h2 class="font-display text-2xl text-navy font-semibold mb-1">Gallery</h2>
+    <p class="text-navy-400 text-sm mb-6">A glimpse into life at DDEC International School.</p>
+    <div class="relative">
+      <div id="galleryTrack" class="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scroll-smooth"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FACULTY & STAFF (admin-managed) ============ -->
+<section id="facultySection" class="hidden max-w-6xl mx-auto px-4 sm:px-6 py-14">
+  <h2 class="font-display text-2xl text-navy font-semibold mb-1">Faculty &amp; Staff</h2>
+  <p class="text-navy-400 text-sm mb-6">Meet the team guiding our students every day.</p>
+  <div id="facultyTrack" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+</section>
+
+<!-- ============ TESTIMONIALS (admin-managed) ============ -->
+<section id="testimonialSection" class="hidden bg-white border-y border-navy-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+    <h2 class="font-display text-2xl text-navy font-semibold mb-1">What Families Say</h2>
+    <p class="text-navy-400 text-sm mb-6">Real words from our parents and alumni.</p>
+    <div id="testimonialTrack" class="grid sm:grid-cols-2 gap-5"></div>
+  </div>
+</section>
+
+<!-- ============ EVENTS & NOTICES (admin-managed announcements) ============ -->
+<section id="announcementSection" class="hidden max-w-6xl mx-auto px-4 sm:px-6 py-14">
+  <h2 class="font-display text-2xl text-navy font-semibold mb-1">Events &amp; Notices</h2>
+  <p class="text-navy-400 text-sm mb-6">Latest updates from the school office.</p>
+  <div id="announcementTrack" class="space-y-3"></div>
+</section>
+
+<!-- ============ CONTACT / ENQUIRY FORM ============ -->
+<section id="enquiry" class="bg-cream border-y border-navy-100">
+  <div class="max-w-3xl mx-auto px-4 sm:px-6 py-14">
+    <h2 class="font-display text-2xl text-navy font-semibold mb-1 text-center">Get In Touch</h2>
+    <p class="text-navy-400 text-sm mb-6 text-center">Have a question about admissions or fees? Send us a message.</p>
+    <form id="enquiryForm" class="bg-white border border-navy-100 rounded-2xl p-6 sm:p-8 space-y-4">
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-xs font-medium text-navy-400">Name</label>
+          <input id="enq_name" required class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+        </div>
+        <div>
+          <label class="text-xs font-medium text-navy-400">Phone</label>
+          <input id="enq_phone" required class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" placeholder="10-digit mobile" />
+        </div>
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">Email (optional)</label>
+        <input id="enq_email" type="email" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">Message</label>
+        <textarea id="enq_message" required rows="4" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm"></textarea>
+      </div>
+      <button type="submit" class="w-full bg-navy hover:bg-navy-400 text-white text-sm font-medium py-3 rounded-lg transition-colors">Send Message</button>
+      <p id="enquirySuccess" class="hidden text-sm text-green-700 bg-green-50 border border-green-100 rounded-lg px-3 py-2.5 text-center"><i class="fa-solid fa-circle-check mr-1"></i>Thank you! We've received your message and will get back to you soon.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ GALLERY LIGHTBOX ============ -->
+<div id="lightboxRoot" class="fixed inset-0 z-[70] hidden bg-black/85 items-center justify-center p-4" onclick="closeLightbox()">
+  <img id="lightboxImg" src="" class="max-w-full max-h-full rounded-lg" />
+  <button onclick="closeLightbox()" class="absolute top-5 right-5 text-white text-2xl"><i class="fa-solid fa-xmark"></i></button>
+</div>
+
 <!-- ============ CONTACT / FOOTER ============ -->
 <footer class="bg-navy text-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid sm:grid-cols-3 gap-8">
@@ -258,7 +329,7 @@
         Log In
       </button>
     </form>
-    <p class="text-[11px] text-navy-400 text-center mt-4">Demo credentials — Username: <code class="bg-cream px-1 rounded">admin</code> · Password: <code class="bg-cream px-1 rounded">admin123</code></p>
+    <p class="text-[11px] text-navy-400 text-center mt-4">Demo — Principal: <code class="bg-cream px-1 rounded">admin/admin123</code> · Accountant: <code class="bg-cream px-1 rounded">accountant/acc123</code> · Teacher: <code class="bg-cream px-1 rounded">teacher/tch123</code></p>
     <button type="button" id="backToHomeBtn" class="block w-full text-center text-xs text-navy-400 hover:text-navy mt-3"><i class="fa-solid fa-arrow-left mr-1"></i>Back to homepage</button>
   </div>
 </div>
@@ -275,6 +346,12 @@
           <p class="font-display font-semibold text-navy text-sm sm:text-base">DDEC International School</p>
           <p class="text-[10.5px] text-navy-400">Admin Portal</p>
         </div>
+      </div>
+      <div class="relative flex-1 max-w-xs mx-2 hidden md:block">
+        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-navy-400 text-xs"></i>
+        <input id="globalSearchInput" placeholder="Search student, adm. no., parent, mobile…"
+          class="pl-8 pr-3 py-2 text-xs sm:text-sm border border-navy-100 rounded-full w-full focus:outline-none focus:ring-2 focus:ring-gold-100 focus:border-gold" />
+        <div id="globalSearchResults" class="hidden absolute z-40 top-full mt-1 left-0 right-0 bg-white rounded-xl border border-navy-100 shadow-xl max-h-80 overflow-y-auto"></div>
       </div>
       <div class="flex items-center gap-2 sm:gap-3">
         <div class="text-right hidden sm:block leading-tight">
@@ -297,7 +374,11 @@
       <button data-tab="fees" class="tab-btn whitespace-nowrap text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100 transition-colors"><i class="fa-solid fa-money-bill-wave mr-1.5"></i>Fee Desk</button>
       <button data-tab="attendance" class="tab-btn whitespace-nowrap text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100 transition-colors"><i class="fa-solid fa-calendar-check mr-1.5"></i>Attendance</button>
       <button data-tab="exports" class="tab-btn whitespace-nowrap text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100 transition-colors"><i class="fa-solid fa-print mr-1.5"></i>Exports Hub</button>
-      <button data-tab="banner" class="tab-btn whitespace-nowrap text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100 transition-colors"><i class="fa-solid fa-bullhorn mr-1.5"></i>Banner Control</button>
+      <button data-tab="notices" class="tab-btn whitespace-nowrap text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100 transition-colors"><i class="fa-brands fa-whatsapp mr-1.5"></i>Notices</button>
+      <button data-tab="banner" class="tab-btn whitespace-nowrap text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100 transition-colors"><i class="fa-solid fa-bullhorn mr-1.5"></i>Website Content</button>
+      <button data-tab="faculty" class="tab-btn whitespace-nowrap text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100 transition-colors"><i class="fa-solid fa-chalkboard-user mr-1.5"></i>Faculty &amp; Staff</button>
+      <button data-tab="enquiries" class="tab-btn whitespace-nowrap text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100 transition-colors"><i class="fa-solid fa-envelope-open-text mr-1.5"></i>Enquiries</button>
+      <button data-tab="admin" class="tab-btn whitespace-nowrap text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100 transition-colors"><i class="fa-solid fa-user-shield mr-1.5"></i>Admin &amp; Roles</button>
     </nav>
   </header>
 
@@ -307,7 +388,11 @@
     <section id="tab-fees" class="tab-panel hidden"></section>
     <section id="tab-attendance" class="tab-panel hidden"></section>
     <section id="tab-exports" class="tab-panel hidden"></section>
+    <section id="tab-notices" class="tab-panel hidden"></section>
     <section id="tab-banner" class="tab-panel hidden"></section>
+    <section id="tab-faculty" class="tab-panel hidden"></section>
+    <section id="tab-enquiries" class="tab-panel hidden"></section>
+    <section id="tab-admin" class="tab-panel hidden"></section>
   </main>
 </div>
 
@@ -355,8 +440,136 @@ const CLASS_LIST = [
 
 const STREAM_CLASSES = ["11", "12"];
 const STREAMS = ["Science", "Commerce", "Arts"];
+const SECTIONS = ["A", "B", "C", "D"];
 
 const TRANSPORT_FEE = 500;
+
+const LOW_ATTENDANCE_THRESHOLD = 75;
+
+/* -------------------------------------------------------------------------
+   Roles & permissions
+   ---------------------------------------------------------------------- */
+const ROLES = ["Principal", "Accountant", "Teacher"];
+
+const ROLE_TABS = {
+  Principal: ["dashboard", "students", "fees", "attendance", "exports", "notices", "banner", "faculty", "enquiries", "admin"],
+  Accountant: ["dashboard", "students", "fees", "notices"],
+  Teacher: ["attendance", "notices", "banner"]
+};
+
+function roleCanAccess(role, tab) {
+  return (ROLE_TABS[role] || []).includes(tab);
+}
+
+/** Builds a wa.me deep link that opens WhatsApp with a prefilled message. */
+function whatsappLink(mobile, text) {
+  const digits = (mobile || "").replace(/\D/g, "");
+  const withCountry = digits.length === 10 ? "91" + digits : digits;
+  return `https://wa.me/${withCountry}?text=${encodeURIComponent(text)}`;
+}
+
+/** Displays a phone number with +91 automatically prepended for plain 10-digit numbers. */
+function displayPhone(mobile) {
+  const digits = (mobile || "").replace(/\D/g, "");
+  if (!digits) return "—";
+  if (digits.length === 10) return "+91 " + digits;
+  if (digits.length > 10) return "+" + digits;
+  return digits;
+}
+
+/* -------------------------------------------------------------------------
+   WhatsApp Notice System — templates, placeholder resolution, recipients
+   ---------------------------------------------------------------------- */
+const NOTICE_TYPE_LABELS = {
+  attendance: "Attendance Reminder",
+  fee: "Fee Due",
+  general: "General Notice",
+  custom: "Custom Message"
+};
+
+const NOTICE_TEMPLATES = {
+  attendance: "Dear Parent, this is to inform you that {{name}}'s ({{class}}) attendance is {{attendance}}, which is below the required 75%. Kindly ensure regular attendance. - {{school}}",
+  fee: "Dear Parent, this is a reminder that a fee amount of {{dueAmount}} is due for {{name}} ({{class}}). Kindly clear the dues at the earliest. - {{school}}",
+  general: "Dear Parent, this is a notice regarding {{name}} ({{class}}) from {{school}}. ",
+  custom: ""
+};
+
+/** Replaces {{placeholders}} in a notice template with real student data. */
+function resolveNoticeMessage(template, state, student, extra) {
+  extra = extra || {};
+  const attendanceText = extra.attendancePct !== undefined ? extra.attendancePct + "%" : "—";
+  const dueAmount = extra.dueAmount !== undefined ? extra.dueAmount : feeRemaining(student);
+  return String(template || "")
+    .replace(/{{\s*name\s*}}/gi, student.name)
+    .replace(/{{\s*class\s*}}/gi, classLabel(student.class, student.stream))
+    .replace(/{{\s*dueAmount\s*}}/gi, formatINR(dueAmount))
+    .replace(/{{\s*attendance\s*}}/gi, attendanceText)
+    .replace(/{{\s*school\s*}}/gi, state.school.shortName)
+    .replace(/{{\s*parentName\s*}}/gi, student.parentName || "Parent");
+}
+
+/** Active students with pending fee dues. */
+function feeDefaulterStudents(state) {
+  return state.students.filter((s) => s.status === "active" && feeRemaining(s) > 0);
+}
+
+/** Active students below the attendance threshold for a given month, across all classes with attendance data. */
+function lowAttendanceStudentsForMonth(state, monthStr) {
+  const out = [];
+  CLASS_LIST.forEach((cls) => {
+    const record = getAttendance(state, cls, monthStr);
+    if (!record.totalDays) return;
+    state.students.filter((s) => s.class === cls && s.status === "active").forEach((s) => {
+      const present = record.records[s.id] ?? 0;
+      const pct = attendancePercent(present, record.totalDays);
+      if (pct < LOW_ATTENDANCE_THRESHOLD) out.push({ student: s, pct, present, totalDays: record.totalDays });
+    });
+  });
+  return out.sort((a, b) => a.pct - b.pct);
+}
+
+/** Appends an entry to the WhatsApp notice sent log, keeping only the most recent 200. */
+function logNotice(state, student, type, message, status) {
+  if (!Array.isArray(state.noticeLog)) state.noticeLog = [];
+  state.noticeLog.unshift({
+    id: uid("ntc"),
+    studentId: student.id,
+    studentName: student.name,
+    type,
+    message,
+    date: new Date().toISOString(),
+    status: status || "Opened"
+  });
+  state.noticeLog = state.noticeLog.slice(0, 200);
+  saveState(state);
+}
+
+/* -------------------------------------------------------------------------
+   Enquiries (public contact form submissions)
+   ---------------------------------------------------------------------- */
+function addEnquiry(state, data) {
+  const enquiry = {
+    id: uid("enq"),
+    name: (data.name || "").trim(),
+    phone: (data.phone || "").trim(),
+    email: (data.email || "").trim(),
+    message: (data.message || "").trim(),
+    date: new Date().toISOString(),
+    status: "new",
+    responseNote: ""
+  };
+  state.enquiries.unshift(enquiry);
+  saveState(state);
+  return enquiry;
+}
+
+function markEnquiryResponded(state, id, responseNote) {
+  const e = state.enquiries.find((x) => x.id === id);
+  if (!e) return;
+  e.status = "responded";
+  e.responseNote = responseNote || e.responseNote || "";
+  saveState(state);
+}
 
 function feeGroupOf(cls) {
   if (["Playgroup", "Nursery", "LKG", "UKG"].includes(cls)) return "PG / Nursery";
@@ -403,7 +616,24 @@ function defaultState() {
         { id: "b3", text: "Transport facility available across Ghatampur & nearby villages.", image: "" }
       ],
       imageBanners: [],
-      noticeText: "Admissions open for session " + year + "-" + (year + 1) + " — Playgroup to Class 12."
+      noticeText: "Admissions open for session " + year + "-" + (year + 1) + " — Playgroup to Class 12.",
+
+      gallery: [], // { id, image, caption }
+
+      testimonials: [
+        { id: "test1", name: "Mrs. Sunita Awasthi", role: "Parent, Class 5", text: "DDEC International School has given my daughter a wonderful foundation. The teachers genuinely care about every child.", photo: "" },
+        { id: "test2", name: "Rohit Katiyar", role: "Alumnus, Batch 2023", text: "The discipline and academics here prepared me well for my board exams and beyond. Grateful to my teachers.", photo: "" }
+      ],
+
+      faculty: [
+        { id: "fac1", name: "Mrs. Neelam Dwivedi", designation: "Principal", qualification: "M.A., B.Ed.", contact: "", photo: "" },
+        { id: "fac2", name: "Mr. R. K. Sharma", designation: "Vice Principal / Accountant", qualification: "M.Com.", contact: "", photo: "" },
+        { id: "fac3", name: "Ms. Pooja Awasthi", designation: "Senior Teacher", qualification: "M.Sc., B.Ed.", contact: "", photo: "" }
+      ],
+
+      announcements: [
+        { id: "ann1", title: "Admissions Open " + year + "-" + (year + 1), body: "Admissions are now open for Playgroup to Class 12. Visit the school office or contact us on Instagram to apply.", date: new Date().toISOString() }
+      ]
     },
 
     admin: {
@@ -412,6 +642,14 @@ function defaultState() {
       name: "Mrs. Neelam Dwivedi",
       role: "Principal / Administrator"
     },
+
+    admins: [
+      { id: "adm_principal", username: "admin", password: "admin123", name: "Mrs. Neelam Dwivedi", role: "Principal" },
+      { id: "adm_accountant", username: "accountant", password: "acc123", name: "Mr. R. K. Sharma", role: "Accountant" },
+      { id: "adm_teacher", username: "teacher", password: "tch123", name: "Ms. Pooja Awasthi", role: "Teacher" }
+    ],
+
+    activityLog: [],
 
     feeStructure: {
       "PG / Nursery": 1200,
@@ -436,7 +674,13 @@ function defaultState() {
     boardResults: {
       passPercent: 96,
       year: year - 1
-    }
+    },
+
+    enquiries: [], // { id, name, phone, email, message, date, status: 'new'|'responded', responseNote }
+
+    noticeLog: [], // { id, studentId, studentName, type, message, date, status }
+
+    promotionHistory: [] // { id, date, fromClass, toClass, count, regenRoll, actor }
   };
 
   seedDemoStudents(state);
@@ -490,12 +734,62 @@ function loadState() {
   if (!state) {
     state = defaultState();
     DB.set(state);
+  } else {
+    if (migrateState(state)) DB.set(state);
   }
   return state;
 }
 
 function saveState(state) {
   DB.set(state);
+}
+
+/* -------------------------------------------------------------------------
+   Backward-compatibility migration — automatically adds any keys that are
+   missing from data saved by an older version of this app. Returns true if
+   anything changed (so the caller knows to persist it back).
+   ---------------------------------------------------------------------- */
+function migrateState(state) {
+  let changed = false;
+
+  if (!Array.isArray(state.admins)) {
+    state.admins = [
+      { id: "adm_principal", username: state.admin.username, password: state.admin.password, name: state.admin.name, role: "Principal" }
+    ];
+    changed = true;
+  }
+  if (!Array.isArray(state.activityLog)) { state.activityLog = []; changed = true; }
+
+  if (!Array.isArray(state.school.gallery)) { state.school.gallery = []; changed = true; }
+  if (!Array.isArray(state.school.testimonials)) { state.school.testimonials = []; changed = true; }
+  if (!Array.isArray(state.school.faculty)) { state.school.faculty = []; changed = true; }
+  if (!Array.isArray(state.school.announcements)) { state.school.announcements = []; changed = true; }
+  if (!Array.isArray(state.enquiries)) { state.enquiries = []; changed = true; }
+  if (!Array.isArray(state.noticeLog)) { state.noticeLog = []; changed = true; }
+  if (!Array.isArray(state.promotionHistory)) { state.promotionHistory = []; changed = true; }
+
+  state.students.forEach((s) => {
+    if (s.parentName === undefined) { s.parentName = ""; changed = true; }
+    if (s.section === undefined) { s.section = "A"; changed = true; }
+    if (s.photo === undefined) { s.photo = ""; changed = true; }
+    if (s.admissionDate === undefined) {
+      s.admissionDate = new Date(s.admissionYear || new Date().getFullYear(), 5, 1).toISOString();
+      changed = true;
+    }
+    if (!s.fees) { s.fees = { totalDues: 0, totalPaid: 0, payments: [] }; changed = true; }
+    if (s.fees.discountPercent === undefined) { s.fees.discountPercent = 0; changed = true; }
+    if (s.fees.dueDate === undefined) { s.fees.dueDate = defaultDueDate(); changed = true; }
+  });
+
+  return changed;
+}
+
+/** Appends an entry to the activity log, keeping only the most recent 20. */
+function logActivity(state, message) {
+  if (!Array.isArray(state.activityLog)) state.activityLog = [];
+  const actor = (typeof currentAdmin !== "undefined" && currentAdmin) ? currentAdmin.name : (state.admin ? state.admin.name : "Admin");
+  state.activityLog.unshift({ id: uid("log"), message, actor, date: new Date().toISOString() });
+  state.activityLog = state.activityLog.slice(0, 20);
 }
 
 function resetDemoData() {
@@ -524,29 +818,50 @@ function makeStudent(state, data) {
     admissionNo,
     name: data.name,
     class: data.class,
+    section: data.section || "A",
     stream: STREAM_CLASSES.includes(data.class) ? (data.stream || "Science") : "",
+    parentName: data.parentName || "",
     parentMobile: data.parentMobile || "",
     transportOpted: !!data.transportOpted,
     status: data.status || "active", // active | passedout | left
     admissionYear: new Date().getFullYear(),
-    rollNo: data.rollNo || "",
+    admissionDate: data.admissionDate || new Date().toISOString(),
+    rollNo: (data.rollNo || "").trim() || nextRollNo(state, data.class),
     batch: data.batch || "",
     leftReason: data.leftReason || "",
+    photo: data.photo || "", // base64 data URL
     fees: {
       totalDues: 0,        // set below
       totalPaid: 0,
+      discountPercent: Number(data.discountPercent) || 0, // scholarship / discount %
+      dueDate: data.dueDate || defaultDueDate(),
       payments: []
     }
   };
 }
 
+/** Default fee due date: the 10th of next month. */
+function defaultDueDate() {
+  const d = new Date();
+  d.setMonth(d.getMonth() + 1, 10);
+  return d.toISOString().slice(0, 10);
+}
+
 function addStudent(state, data) {
   const student = makeStudent(state, data);
   const monthly = monthlyFeeFor(state, student);
-  student.fees.totalDues = monthly * 12; // default: one full session
+  const annual = monthly * 12;
+  student.fees.totalDues = applyDiscount(annual, student.fees.discountPercent);
   state.students.push(student);
+  logActivity(state, `Admitted new student ${student.name} (${student.admissionNo}).`);
   saveState(state);
   return student;
+}
+
+/** Subtracts a scholarship/discount percentage from a fee amount. */
+function applyDiscount(amount, discountPercent) {
+  const pct = Math.max(0, Math.min(100, Number(discountPercent) || 0));
+  return Math.round(amount * (1 - pct / 100));
 }
 
 function updateStudent(state, id, patch) {
@@ -554,12 +869,15 @@ function updateStudent(state, id, patch) {
   if (!student) return null;
   Object.assign(student, patch);
   if (!STREAM_CLASSES.includes(student.class)) student.stream = "";
+  logActivity(state, `Updated student record for ${student.name} (${student.admissionNo}).`);
   saveState(state);
   return student;
 }
 
 function deleteStudent(state, id) {
+  const s = findStudent(state, id);
   state.students = state.students.filter((s) => s.id !== id);
+  if (s) logActivity(state, `Removed student record for ${s.name} (${s.admissionNo}).`);
   saveState(state);
 }
 
@@ -567,17 +885,118 @@ function findStudent(state, id) {
   return state.students.find((s) => s.id === id) || null;
 }
 
-function searchStudents(state, query, bucket) {
+function searchStudents(state, query, bucket, filters) {
   const q = (query || "").trim().toLowerCase();
+  const f = filters || {};
   return state.students.filter((s) => {
     if (bucket && bucket !== "all" && s.status !== bucket) return false;
+    if (f.class && f.class !== "all" && s.class !== f.class) return false;
+    if (f.section && f.section !== "all" && (s.section || "A") !== f.section) return false;
     if (!q) return true;
     return (
       s.name.toLowerCase().includes(q) ||
       s.admissionNo.toLowerCase().includes(q) ||
+      (s.rollNo || "").toLowerCase().includes(q) ||
+      classLabel(s.class, s.stream).toLowerCase().includes(q) ||
+      (s.parentName || "").toLowerCase().includes(q) ||
       (s.parentMobile || "").includes(q)
     );
   });
+}
+
+/* -------------------------------------------------------------------------
+   Roll number auto-generation
+   -------------------------------------------------------------------------
+   Roll numbers are unique within a class + current admission session
+   (school year). If left blank on the admission form, the next sequential
+   number for that class is generated automatically. Manual entries are
+   checked for duplicates within the same class. ---------------------- */
+function nextRollNo(state, cls, excludeId) {
+  const nums = state.students
+    .filter((s) => s.class === cls && s.status === "active" && s.id !== excludeId)
+    .map((s) => parseInt(s.rollNo, 10))
+    .filter((n) => !isNaN(n));
+  const max = nums.length ? Math.max(...nums) : 0;
+  return String(max + 1);
+}
+
+function isRollNoTaken(state, cls, rollNo, excludeId) {
+  const q = (rollNo || "").trim().toLowerCase();
+  if (!q) return false;
+  return state.students.some((s) =>
+    s.id !== excludeId &&
+    s.class === cls &&
+    s.status === "active" &&
+    (s.rollNo || "").trim().toLowerCase() === q
+  );
+}
+
+/* -------------------------------------------------------------------------
+   Data validation helpers
+   ---------------------------------------------------------------------- */
+function validateMobile(v) {
+  const digits = (v || "").replace(/\D/g, "");
+  return digits.length === 0 || /^[6-9]\d{9}$/.test(digits);
+}
+
+function validateEmail(v) {
+  return !v || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+}
+
+/* -------------------------------------------------------------------------
+   Smart duplicate-admission detection — flags a warning only when BOTH the
+   student name and parent mobile number match an existing record (siblings
+   commonly share a parent mobile number alone, which should not warn).
+   ---------------------------------------------------------------------- */
+function findDuplicateAdmission(state, name, parentMobile, excludeId) {
+  const n = (name || "").trim().toLowerCase();
+  const m = (parentMobile || "").trim();
+  if (!n || !m) return null;
+  return state.students.find((s) =>
+    s.id !== excludeId &&
+    s.name.trim().toLowerCase() === n &&
+    (s.parentMobile || "").trim() === m
+  ) || null;
+}
+
+/* -------------------------------------------------------------------------
+   Class Promotion System
+   -------------------------------------------------------------------------
+   Promotes the given students from one class to another. Students not
+   selected remain in their current class. Optionally regenerates roll
+   numbers for the destination class. Every promotion run is logged to
+   state.promotionHistory as well as the general activity log. ---------- */
+function promoteStudents(state, fromClass, toClass, studentIds, regenRoll) {
+  const moved = [];
+  studentIds.forEach((id) => {
+    const s = findStudent(state, id);
+    if (!s || s.class !== fromClass || s.status !== "active") return;
+    s.class = toClass;
+    if (!STREAM_CLASSES.includes(s.class)) s.stream = "";
+    moved.push(s);
+  });
+
+  if (regenRoll) {
+    moved
+      .slice()
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .forEach((s) => { s.rollNo = nextRollNo(state, s.class, s.id); });
+  }
+
+  state.promotionHistory.unshift({
+    id: uid("promo"),
+    date: new Date().toISOString(),
+    fromClass,
+    toClass,
+    count: moved.length,
+    regenRoll: !!regenRoll,
+    actor: (typeof currentAdmin !== "undefined" && currentAdmin) ? currentAdmin.name : "Admin"
+  });
+  state.promotionHistory = state.promotionHistory.slice(0, 20);
+
+  logActivity(state, `Promoted ${moved.length} student(s) from ${classLabel(fromClass)} to ${classLabel(toClass)}.`);
+  saveState(state);
+  return moved;
 }
 
 /* -------------------------------------------------------------------------
@@ -599,6 +1018,21 @@ function feeStatus(student) {
   return { label: `Unpaid / Pending: ₹${remaining}`, tone: "red" };
 }
 
+/** Returns a color badge describing where a student stands vs. their fee due date. */
+function feeDueBadge(student) {
+  const remaining = feeRemaining(student);
+  if (remaining <= 0) return { tone: "green", label: "🟢 Paid" };
+  const due = student.fees.dueDate ? new Date(student.fees.dueDate) : null;
+  if (!due || isNaN(due.getTime())) return { tone: "green", label: "🟢 Not Due" };
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const msPerDay = 24 * 60 * 60 * 1000;
+  const daysLeft = Math.round((due - today) / msPerDay);
+  if (daysLeft < 0) return { tone: "red", label: "🔴 Overdue" };
+  if (daysLeft <= 7) return { tone: "amber", label: "🟡 Near Due" };
+  return { tone: "green", label: "🟢 Not Due" };
+}
+
 function recordPayment(state, studentId, amount, mode) {
   const student = findStudent(state, studentId);
   if (!student) return null;
@@ -615,6 +1049,7 @@ function recordPayment(state, studentId, amount, mode) {
   };
   student.fees.payments.push(payment);
   student.fees.totalPaid = (student.fees.totalPaid || 0) + applied;
+  logActivity(state, `Collected ₹${applied} from ${student.name} (${student.admissionNo}) via ${payment.mode}.`);
   saveState(state);
   return { student, payment, remainingAfter: feeRemaining(student) };
 }
@@ -658,14 +1093,20 @@ const Session = {
     return sessionStorage.getItem(SESSION_KEY) === "true";
   },
   login(username, password, state) {
-    if (username === state.admin.username && password === state.admin.password) {
+    const match = (state.admins || []).find((a) => a.username === username && a.password === password);
+    if (match) {
       sessionStorage.setItem(SESSION_KEY, "true");
-      return true;
+      sessionStorage.setItem(SESSION_KEY + "_id", match.id);
+      return match;
     }
-    return false;
+    return null;
+  },
+  currentAdminId() {
+    return sessionStorage.getItem(SESSION_KEY + "_id");
   },
   logout() {
     sessionStorage.removeItem(SESSION_KEY);
+    sessionStorage.removeItem(SESSION_KEY + "_id");
   }
 };
 
@@ -1050,7 +1491,117 @@ function escapeHtml(str) {
     `;
   }).join("");
   feeBody.innerHTML = rows;
+
+  /* --------------------------- Gallery --------------------------- */
+  (function () {
+    const section = document.getElementById("gallerySection");
+    const track = document.getElementById("galleryTrack");
+    const items = (state.school.gallery || []).filter((g) => g && g.image);
+    if (!items.length) return; // stays hidden — no gap
+
+    section.classList.remove("hidden");
+    track.innerHTML = items.map((g) => `
+      <button type="button" class="shrink-0 w-52 sm:w-64 aspect-[4/3] rounded-xl overflow-hidden border border-navy-100 snap-start" data-lightbox="${g.image.replace(/"/g, "&quot;")}">
+        <img src="${g.image}" alt="${escapeHtml(g.caption || "Gallery photo")}" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+      </button>
+    `).join("");
+    track.querySelectorAll("[data-lightbox]").forEach((btn) => {
+      btn.addEventListener("click", () => openLightbox(btn.dataset.lightbox));
+    });
+  })();
+
+  /* --------------------------- Faculty & Staff --------------------------- */
+  (function () {
+    const section = document.getElementById("facultySection");
+    const track = document.getElementById("facultyTrack");
+    const items = state.school.faculty || [];
+    if (!items.length) return;
+
+    section.classList.remove("hidden");
+    track.innerHTML = items.map((f) => `
+      <div class="bg-white rounded-2xl border border-navy-100 p-5 flex items-center gap-4">
+        ${f.photo ? `<img src="${f.photo}" class="h-16 w-16 rounded-full object-cover border border-navy-100 shrink-0" />` : `<span class="h-16 w-16 rounded-full bg-cream border border-navy-100 text-navy-400 flex items-center justify-center shrink-0"><i class="fa-solid fa-user"></i></span>`}
+        <div class="min-w-0">
+          <p class="font-semibold text-navy text-sm">${escapeHtml(f.name)}</p>
+          <p class="text-xs text-gold-600 font-medium">${escapeHtml(f.designation)}</p>
+          ${f.qualification ? `<p class="text-xs text-navy-400 mt-0.5">${escapeHtml(f.qualification)}</p>` : ""}
+          ${f.contact ? `<p class="text-xs text-navy-400">${escapeHtml(f.contact)}</p>` : ""}
+        </div>
+      </div>
+    `).join("");
+  })();
+
+  /* --------------------------- Testimonials --------------------------- */
+  (function () {
+    const section = document.getElementById("testimonialSection");
+    const track = document.getElementById("testimonialTrack");
+    const items = state.school.testimonials || [];
+    if (!items.length) return;
+
+    section.classList.remove("hidden");
+    track.innerHTML = items.map((t) => `
+      <div class="bg-cream rounded-2xl border border-navy-100 p-5">
+        <i class="fa-solid fa-quote-left text-gold-300 text-lg"></i>
+        <p class="text-sm text-navy-400 mt-2 leading-relaxed">${escapeHtml(t.text)}</p>
+        <p class="text-sm font-semibold text-navy mt-3">${escapeHtml(t.name)}</p>
+        ${t.role ? `<p class="text-xs text-navy-400">${escapeHtml(t.role)}</p>` : ""}
+      </div>
+    `).join("");
+  })();
+
+  /* --------------------------- Events & Notices --------------------------- */
+  (function () {
+    const section = document.getElementById("announcementSection");
+    const track = document.getElementById("announcementTrack");
+    const items = (state.school.announcements || []).slice().sort((a, b) => new Date(b.date) - new Date(a.date)).slice(0, 5);
+    if (!items.length) return;
+
+    section.classList.remove("hidden");
+    track.innerHTML = items.map((a) => `
+      <div class="bg-white border border-navy-100 rounded-xl p-4 flex gap-4 items-start">
+        <div class="shrink-0 bg-navy text-white text-xs font-semibold rounded-lg px-3 py-2 text-center leading-tight">${formatDate(a.date)}</div>
+        <div class="min-w-0">
+          <p class="font-semibold text-navy text-sm">${escapeHtml(a.title)}</p>
+          <p class="text-xs text-navy-400 mt-1">${escapeHtml(a.body)}</p>
+        </div>
+      </div>
+    `).join("");
+  })();
+
+  /* --------------------------- Enquiry / Contact form --------------------------- */
+  (function () {
+    const form = document.getElementById("enquiryForm");
+    if (!form) return;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("enq_name").value.trim();
+      const phone = document.getElementById("enq_phone").value.trim();
+      const email = document.getElementById("enq_email").value.trim();
+      const message = document.getElementById("enq_message").value.trim();
+      if (!name || !phone || !message) return;
+
+      const freshState = loadState(); // reload in case admin state changed in this session
+      addEnquiry(freshState, { name, phone, email, message });
+
+      form.reset();
+      document.getElementById("enquirySuccess").classList.remove("hidden");
+      setTimeout(() => document.getElementById("enquirySuccess").classList.add("hidden"), 5000);
+    });
+  })();
 })();
+
+/* --------------------------- Gallery lightbox (global) --------------------------- */
+function openLightbox(src) {
+  document.getElementById("lightboxImg").src = src;
+  const root = document.getElementById("lightboxRoot");
+  root.classList.remove("hidden");
+  root.classList.add("flex");
+}
+function closeLightbox() {
+  const root = document.getElementById("lightboxRoot");
+  root.classList.add("hidden");
+  root.classList.remove("flex");
+}
 
 </script>
 <script>
@@ -1060,17 +1611,33 @@ function escapeHtml(str) {
 
 let state = loadState();
 let currentTab = "dashboard";
+let currentAdmin = null;
 let studentBucket = "active";
 let studentQuery = "";
+let studentClassFilter = "all";
+let studentSectionFilter = "all";
 let feeSelectedStudentId = null;
 let attClass = CLASS_LIST[0];
 let attMonth = currentMonthStr();
+
+/* Notices tab state */
+let noticeType = "general";
+let noticeRecipientMode = "single";
+let noticeSelectedStudentId = "";
+let noticeSelectedClass = CLASS_LIST[0];
+let noticeMonth = currentMonthStr();
+let noticeMessageDraft = NOTICE_TEMPLATES.general;
+let bulkQueue = [];
+let bulkIndex = 0;
 
 /* ------------------------------------------------------------------ */
 /*  Boot / Auth                                                        */
 /* ------------------------------------------------------------------ */
 function boot() {
-  if (Session.isLoggedIn()) showAdminShell();
+  if (Session.isLoggedIn()) {
+    currentAdmin = (state.admins || []).find((a) => a.id === Session.currentAdminId()) || state.admins[0];
+    showAdminShell();
+  }
   bindLoginForm();
 }
 
@@ -1080,7 +1647,11 @@ function bindLoginForm() {
     e.preventDefault();
     const u = document.getElementById("loginUsername").value.trim();
     const p = document.getElementById("loginPassword").value;
-    if (Session.login(u, p, state)) {
+    const match = Session.login(u, p, state);
+    if (match) {
+      currentAdmin = match;
+      logActivity(state, `${match.name} (${match.role}) logged in.`);
+      saveState(state);
       showAdminShell();
     } else {
       document.getElementById("loginError").classList.remove("hidden");
@@ -1091,15 +1662,43 @@ function bindLoginForm() {
 function showAdminShell() {
   document.getElementById("loginOverlay").classList.add("hidden");
   document.getElementById("adminShell").classList.remove("hidden");
-  document.getElementById("adminNameLabel").textContent = state.admin.name;
-  document.getElementById("adminRoleLabel").textContent = state.admin.role;
+  document.getElementById("adminNameLabel").textContent = currentAdmin.name;
+  document.getElementById("adminRoleLabel").textContent = currentAdmin.role;
   bindHeaderActions();
   bindTabs();
+  applyRoleVisibility();
   renderTab();
 }
 
+/** Hides tabs the logged-in role isn't permitted to see, and lands on an allowed one. */
+function applyRoleVisibility() {
+  document.querySelectorAll(".tab-btn").forEach((btn) => {
+    const allowed = roleCanAccess(currentAdmin.role, btn.dataset.tab);
+    btn.classList.toggle("hidden", !allowed);
+  });
+  if (!roleCanAccess(currentAdmin.role, currentTab)) {
+    const firstAllowed = ROLE_TABS[currentAdmin.role][0];
+    currentTab = firstAllowed;
+    document.querySelectorAll(".tab-btn").forEach((b) => b.classList.toggle("active", b.dataset.tab === firstAllowed));
+    document.querySelectorAll(".tab-panel").forEach((p) => p.classList.add("hidden"));
+    const panel = document.getElementById("tab-" + firstAllowed);
+    if (panel) panel.classList.remove("hidden");
+  }
+}
+
 function bindHeaderActions() {
+  const gsInput = document.getElementById("globalSearchInput");
+  const gsResults = document.getElementById("globalSearchResults");
+  if (gsInput) {
+    gsInput.addEventListener("input", () => renderGlobalSearchResults(gsInput.value));
+    gsInput.addEventListener("focus", () => { if (gsInput.value.trim()) renderGlobalSearchResults(gsInput.value); });
+    document.addEventListener("click", (e) => {
+      if (!gsInput.contains(e.target) && !gsResults.contains(e.target)) gsResults.classList.add("hidden");
+    });
+  }
+
   document.getElementById("logoutBtn").addEventListener("click", () => {
+    if (currentAdmin) { logActivity(state, `${currentAdmin.name} logged out.`); saveState(state); }
     Session.logout();
     location.reload();
   });
@@ -1120,6 +1719,7 @@ function bindHeaderActions() {
 function bindTabs() {
   document.querySelectorAll(".tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
+      if (!roleCanAccess(currentAdmin.role, btn.dataset.tab)) return;
       currentTab = btn.dataset.tab;
       document.querySelectorAll(".tab-btn").forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
@@ -1137,8 +1737,13 @@ function renderTab() {
     fees: renderFees,
     attendance: renderAttendance,
     exports: renderExports,
-    banner: renderBanner
+    notices: renderNotices,
+    banner: renderBanner,
+    faculty: renderFaculty,
+    enquiries: renderEnquiries,
+    admin: renderAdminRoles
   };
+  if (!roleCanAccess(currentAdmin.role, currentTab)) return;
   renderers[currentTab]();
 }
 
@@ -1190,6 +1795,45 @@ function classOptionsHtml(selected, includeStreamNote) {
   return CLASS_LIST.map((c) => `<option value="${c}" ${c === selected ? "selected" : ""}>${classLabel(c)}</option>`).join("");
 }
 
+/** Instant, cross-field search box in the admin header — matches name,
+ * admission no., roll no., parent name, parent mobile, and class. */
+function renderGlobalSearchResults(query) {
+  const box = document.getElementById("globalSearchResults");
+  const q = (query || "").trim();
+  if (!q) { box.classList.add("hidden"); box.innerHTML = ""; return; }
+
+  const list = searchStudents(state, q, "all", {}).slice(0, 8);
+  if (!list.length) {
+    box.innerHTML = `<div class="p-4 text-sm text-navy-400 text-center">No matches for "${escapeHtml(q)}".</div>`;
+    box.classList.remove("hidden");
+    return;
+  }
+  box.innerHTML = list.map((s) => `
+    <button data-gs="${s.id}" class="w-full text-left px-3.5 py-2.5 hover:bg-cream flex items-center gap-2.5 border-b border-navy-50 last:border-0">
+      ${s.photo ? `<img src="${s.photo}" class="h-8 w-8 rounded-full object-cover border border-navy-100" />` : `<span class="h-8 w-8 rounded-full bg-navy-50 text-navy-400 flex items-center justify-center text-[10px]"><i class="fa-solid fa-user"></i></span>`}
+      <span class="flex-1 min-w-0">
+        <span class="block text-sm font-medium text-navy truncate">${escapeHtml(s.name)}</span>
+        <span class="block text-[11px] text-navy-400 truncate">${s.admissionNo} · ${classLabel(s.class, s.stream)}${s.parentName ? " · " + escapeHtml(s.parentName) : ""}</span>
+      </span>
+    </button>
+  `).join("");
+  box.classList.remove("hidden");
+  box.querySelectorAll("[data-gs]").forEach((b) => b.addEventListener("click", () => {
+    const s = findStudent(state, b.dataset.gs);
+    box.classList.add("hidden");
+    document.getElementById("globalSearchInput").value = "";
+    if (!roleCanAccess(currentAdmin.role, "students")) return;
+    currentTab = "students";
+    document.querySelectorAll(".tab-btn").forEach((btn) => btn.classList.toggle("active", btn.dataset.tab === "students"));
+    document.querySelectorAll(".tab-panel").forEach((p) => p.classList.add("hidden"));
+    document.getElementById("tab-students").classList.remove("hidden");
+    studentBucket = s.status;
+    studentQuery = s.admissionNo;
+    renderStudents();
+    setTimeout(() => openStudentForm(s), 150);
+  }));
+}
+
 function badgeHtml(tone, text) {
   const map = { green: "bg-green-100 text-green-700", amber: "bg-amber-100 text-amber-700", red: "bg-red-100 text-red-700", gray: "bg-navy-50 text-navy-400" };
   return `<span class="inline-block text-[11px] font-semibold px-2.5 py-1 rounded-full ${map[tone]}">${text}</span>`;
@@ -1205,44 +1849,179 @@ function renderDashboard() {
   const left = state.students.filter((s) => s.status === "left");
   const totalDue = active.reduce((sum, s) => sum + feeRemaining(s), 0);
   const fullyPaidCount = active.filter((s) => feeRemaining(s) <= 0).length;
+  const todaysAdmissions = state.students.filter((s) => isToday(s.admissionDate)).length;
+  const pendingFeesCount = active.filter((s) => feeRemaining(s) > 0).length;
+  const lowAttendanceCount = countLowAttendanceThisMonth(state);
 
   el.innerHTML = `
-    <h2 class="font-display text-2xl font-semibold text-navy mb-1">Welcome back, ${state.admin.name.split(" ")[0] === "Mrs." ? state.admin.name : state.admin.name}</h2>
+    <h2 class="font-display text-2xl font-semibold text-navy mb-1">Welcome back, ${currentAdmin.name}</h2>
     <p class="text-sm text-navy-400 mb-6">Here's what's happening across the school today.</p>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
+      ${statCard("fa-user-plus", todaysAdmissions, "Today's Admissions", "gold")}
+      ${statCard("fa-hand-holding-dollar", pendingFeesCount, "Students With Pending Fees", "red")}
+      ${statCard("fa-calendar-xmark", lowAttendanceCount, "Low Attendance (This Month)", "red")}
+      ${statCard("fa-coins", formatINR(totalDue), "Total Fee Dues (Active)", "navy")}
+    </div>
 
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-8">
       ${statCard("fa-user-graduate", active.length, "Active Students", "navy")}
       ${statCard("fa-award", passedout.length, "Passed-Out Students", "gold")}
       ${statCard("fa-person-walking-arrow-right", left.length, "Left School", "gray")}
-      ${statCard("fa-coins", formatINR(totalDue), "Total Fee Dues (Active)", "red")}
+      ${statCard("fa-circle-check", `${fullyPaidCount}/${active.length}`, "Fully Paid Students", "gold")}
     </div>
 
-    <div class="grid md:grid-cols-2 gap-5">
+    <div class="grid lg:grid-cols-2 gap-5 mb-5">
       <div class="bg-white rounded-2xl border border-navy-100 p-5">
-        <h3 class="font-semibold text-navy text-sm mb-3"><i class="fa-solid fa-chart-pie text-gold-600 mr-1.5"></i>Fee Collection Snapshot</h3>
-        <div class="flex items-center justify-between text-sm mb-1">
-          <span class="text-navy-400">Fully paid</span><span class="font-medium">${fullyPaidCount} / ${active.length}</span>
-        </div>
-        <div class="w-full h-2.5 rounded-full bg-navy-50 overflow-hidden">
-          <div class="h-full bg-gold" style="width:${active.length ? (fullyPaidCount / active.length) * 100 : 0}%"></div>
-        </div>
-        <p class="text-xs text-navy-400 mt-3">Go to <strong>Fee Desk</strong> to collect a payment or print the defaulters list from <strong>Exports Hub</strong>.</p>
+        <h3 class="font-semibold text-navy text-sm mb-3"><i class="fa-solid fa-chart-column text-gold-600 mr-1.5"></i>Class-wise Strength</h3>
+        <canvas id="classStrengthChart" height="200"></canvas>
       </div>
       <div class="bg-white rounded-2xl border border-navy-100 p-5">
-        <h3 class="font-semibold text-navy text-sm mb-3"><i class="fa-solid fa-layer-group text-gold-600 mr-1.5"></i>Students by Class</h3>
-        <div class="space-y-1.5 max-h-44 overflow-y-auto pr-1">
-          ${CLASS_LIST.map((c) => {
-            const count = active.filter((s) => s.class === c).length;
-            if (!count) return "";
-            return `<div class="flex items-center justify-between text-sm">
-              <span class="text-navy-400">${classLabel(c)}</span>
-              <span class="font-medium text-navy">${count}</span>
-            </div>`;
-          }).join("") || `<p class="text-sm text-navy-400">No active students yet.</p>`}
-        </div>
+        <h3 class="font-semibold text-navy text-sm mb-3"><i class="fa-solid fa-chart-pie text-gold-600 mr-1.5"></i>Fee Collection %</h3>
+        <canvas id="feeCollectionChart" height="200"></canvas>
+        <p class="text-xs text-navy-400 mt-3 text-center">${fullyPaidCount} of ${active.length} active students fully paid</p>
       </div>
     </div>
+
+    <div class="bg-white rounded-2xl border border-navy-100 p-5">
+      <h3 class="font-semibold text-navy text-sm mb-3"><i class="fa-solid fa-chart-line text-gold-600 mr-1.5"></i>Enrollment Trend (last 6 months)</h3>
+      <canvas id="enrollmentTrendChart" height="140"></canvas>
+    </div>
   `;
+
+  drawClassStrengthChart(document.getElementById("classStrengthChart"), active);
+  drawFeeCollectionChart(document.getElementById("feeCollectionChart"), fullyPaidCount, active.length);
+  drawEnrollmentTrendChart(document.getElementById("enrollmentTrendChart"), state.students);
+}
+
+function isToday(iso) {
+  if (!iso) return false;
+  const d = new Date(iso);
+  const now = new Date();
+  return d.getFullYear() === now.getFullYear() && d.getMonth() === now.getMonth() && d.getDate() === now.getDate();
+}
+
+/** Counts students below the low-attendance threshold, across all classes, for the current month. */
+function countLowAttendanceThisMonth(state) {
+  const month = currentMonthStr();
+  let count = 0;
+  CLASS_LIST.forEach((cls) => {
+    const record = getAttendance(state, cls, month);
+    const totalDays = record.totalDays || 0;
+    if (!totalDays) return;
+    state.students.filter((s) => s.class === cls && s.status === "active").forEach((s) => {
+      const present = record.records[s.id] ?? 0;
+      if (attendancePercent(present, totalDays) < LOW_ATTENDANCE_THRESHOLD) count += 1;
+    });
+  });
+  return count;
+}
+
+/* ---- Canvas chart helpers (plain HTML5 Canvas, no external libraries) ---- */
+function setupCanvasHiDPI(canvas) {
+  const ctx = canvas.getContext("2d");
+  const ratio = window.devicePixelRatio || 1;
+  const width = canvas.clientWidth || canvas.parentElement.clientWidth || 300;
+  const height = Number(canvas.getAttribute("height")) || 200;
+  canvas.width = width * ratio;
+  canvas.height = height * ratio;
+  canvas.style.width = width + "px";
+  canvas.style.height = height + "px";
+  ctx.scale(ratio, ratio);
+  return { ctx, width, height };
+}
+
+function drawClassStrengthChart(canvas, activeStudents) {
+  if (!canvas) return;
+  const { ctx, width, height } = setupCanvasHiDPI(canvas);
+  const data = CLASS_LIST.map((c) => ({ label: c, count: activeStudents.filter((s) => s.class === c).length })).filter((d) => d.count > 0);
+  ctx.clearRect(0, 0, width, height);
+  if (!data.length) { ctx.fillStyle = "#94a3b8"; ctx.fillText("No active students yet.", 10, 20); return; }
+  const padding = { top: 10, right: 10, bottom: 26, left: 28 };
+  const chartW = width - padding.left - padding.right;
+  const chartH = height - padding.top - padding.bottom;
+  const maxVal = Math.max(...data.map((d) => d.count));
+  const barGap = 6;
+  const barW = Math.max(6, chartW / data.length - barGap);
+  ctx.strokeStyle = "#eef3f8";
+  ctx.beginPath(); ctx.moveTo(padding.left, padding.top); ctx.lineTo(padding.left, padding.top + chartH); ctx.lineTo(padding.left + chartW, padding.top + chartH); ctx.stroke();
+  data.forEach((d, i) => {
+    const barH = maxVal ? (d.count / maxVal) * (chartH - 10) : 0;
+    const x = padding.left + i * (barW + barGap) + barGap / 2;
+    const y = padding.top + chartH - barH;
+    ctx.fillStyle = "#0f2a4a";
+    ctx.fillRect(x, y, barW, barH);
+    ctx.fillStyle = "#0f2a4a";
+    ctx.font = "10px Inter, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(String(d.count), x + barW / 2, y - 3);
+    ctx.fillStyle = "#8a95a5";
+    ctx.fillText(classLabel(d.label).replace("Class ", ""), x + barW / 2, padding.top + chartH + 14);
+  });
+}
+
+function drawFeeCollectionChart(canvas, paidCount, totalCount) {
+  if (!canvas) return;
+  const { ctx, width, height } = setupCanvasHiDPI(canvas);
+  ctx.clearRect(0, 0, width, height);
+  const pct = totalCount ? paidCount / totalCount : 0;
+  const cx = width / 2, cy = height / 2, r = Math.min(width, height) / 2 - 10;
+  ctx.lineWidth = 18;
+  ctx.strokeStyle = "#eef3f8";
+  ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+  ctx.strokeStyle = "#b8860b";
+  ctx.beginPath(); ctx.arc(cx, cy, r, -Math.PI / 2, -Math.PI / 2 + pct * Math.PI * 2); ctx.stroke();
+  ctx.fillStyle = "#0f2a4a";
+  ctx.font = "600 20px Fraunces, serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(Math.round(pct * 100) + "%", cx, cy);
+}
+
+function drawEnrollmentTrendChart(canvas, students) {
+  if (!canvas) return;
+  const { ctx, width, height } = setupCanvasHiDPI(canvas);
+  ctx.clearRect(0, 0, width, height);
+  const months = [];
+  const now = new Date();
+  for (let i = 5; i >= 0; i -= 1) {
+    const d = new Date(now.getFullYear(), now.getMonth() - i, 1);
+    months.push({ key: d.getFullYear() + "-" + d.getMonth(), label: d.toLocaleDateString("en-IN", { month: "short" }), count: 0 });
+  }
+  students.forEach((s) => {
+    const d = new Date(s.admissionDate || s.admissionYear + "-06-01");
+    const key = d.getFullYear() + "-" + d.getMonth();
+    const bucket = months.find((m) => m.key === key);
+    if (bucket) bucket.count += 1;
+  });
+  const padding = { top: 10, right: 14, bottom: 22, left: 24 };
+  const chartW = width - padding.left - padding.right;
+  const chartH = height - padding.top - padding.bottom;
+  const maxVal = Math.max(1, ...months.map((m) => m.count));
+  const stepX = chartW / (months.length - 1 || 1);
+  ctx.strokeStyle = "#eef3f8";
+  ctx.beginPath(); ctx.moveTo(padding.left, padding.top); ctx.lineTo(padding.left, padding.top + chartH); ctx.lineTo(padding.left + chartW, padding.top + chartH); ctx.stroke();
+  ctx.strokeStyle = "#b8860b";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  months.forEach((m, i) => {
+    const x = padding.left + i * stepX;
+    const y = padding.top + chartH - (m.count / maxVal) * (chartH - 10);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  });
+  ctx.stroke();
+  months.forEach((m, i) => {
+    const x = padding.left + i * stepX;
+    const y = padding.top + chartH - (m.count / maxVal) * (chartH - 10);
+    ctx.fillStyle = "#b8860b";
+    ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = "#8a95a5";
+    ctx.font = "10px Inter, sans-serif";
+    ctx.textAlign = "center";
+    ctx.fillText(m.label, x, padding.top + chartH + 14);
+    ctx.fillStyle = "#0f2a4a";
+    ctx.fillText(String(m.count), x, y - 8);
+  });
 }
 
 function statCard(icon, value, label, tone) {
@@ -1272,9 +2051,14 @@ function renderStudents() {
   el.innerHTML = `
     <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
       <h2 class="font-display text-2xl font-semibold text-navy">Student Lifecycle Management</h2>
-      <button id="addStudentBtn" class="inline-flex items-center gap-2 bg-navy hover:bg-navy-400 text-white text-sm font-medium px-4 py-2.5 rounded-lg">
-        <i class="fa-solid fa-plus"></i> New Admission
-      </button>
+      <div class="flex flex-wrap gap-2">
+        <button id="promoteStudentsBtn" class="inline-flex items-center gap-2 bg-white border border-navy-100 hover:border-gold text-navy text-sm font-medium px-4 py-2.5 rounded-lg">
+          <i class="fa-solid fa-layer-group"></i> Promote Students
+        </button>
+        <button id="addStudentBtn" class="inline-flex items-center gap-2 bg-navy hover:bg-navy-400 text-white text-sm font-medium px-4 py-2.5 rounded-lg">
+          <i class="fa-solid fa-plus"></i> New Admission
+        </button>
+      </div>
     </div>
 
     <div class="flex flex-wrap items-center gap-2 mb-4">
@@ -1283,21 +2067,31 @@ function renderStudents() {
           <i class="fa-solid ${b.icon} mr-1.5"></i>${b.label}
         </button>
       `).join("")}
-      <div class="ml-auto relative">
-        <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-navy-400 text-xs"></i>
-        <input id="studentSearch" value="${escapeHtml(studentQuery)}" placeholder="Search name, admission no., or mobile"
-          class="pl-8 pr-3 py-2 text-sm border border-navy-100 rounded-full w-64 max-w-full focus:outline-none focus:ring-2 focus:ring-gold-100 focus:border-gold" />
+      <div class="ml-auto flex flex-wrap items-center gap-2">
+        <select id="studentClassFilterSel" class="text-xs sm:text-sm border border-navy-100 rounded-full px-3 py-2">
+          <option value="all">All Classes</option>
+          ${CLASS_LIST.map((c) => `<option value="${c}" ${studentClassFilter === c ? "selected" : ""}>${classLabel(c)}</option>`).join("")}
+        </select>
+        <select id="studentSectionFilterSel" class="text-xs sm:text-sm border border-navy-100 rounded-full px-3 py-2">
+          <option value="all">All Sections</option>
+          ${SECTIONS.map((sec) => `<option value="${sec}" ${studentSectionFilter === sec ? "selected" : ""}>Section ${sec}</option>`).join("")}
+        </select>
+        <div class="relative">
+          <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-navy-400 text-xs"></i>
+          <input id="studentSearch" value="${escapeHtml(studentQuery)}" placeholder="Search name, roll no., class, mobile"
+            class="pl-8 pr-3 py-2 text-sm border border-navy-100 rounded-full w-64 max-w-full focus:outline-none focus:ring-2 focus:ring-gold-100 focus:border-gold" />
+        </div>
       </div>
     </div>
 
     <div class="bg-white rounded-2xl border border-navy-100 overflow-x-auto">
-      <table class="w-full text-sm min-w-[760px]">
+      <table class="w-full text-sm min-w-[820px]">
         <thead class="bg-cream text-navy-400 text-xs uppercase tracking-wide">
           <tr>
             <th class="text-left px-4 py-3">Adm. No.</th>
             <th class="text-left px-4 py-3">Name</th>
-            <th class="text-left px-4 py-3">Class</th>
-            <th class="text-left px-4 py-3">Parent Mobile</th>
+            <th class="text-left px-4 py-3">Class / Sec.</th>
+            <th class="text-left px-4 py-3">Parent</th>
             <th class="text-left px-4 py-3">Transport</th>
             <th class="text-left px-4 py-3">Fee Status</th>
             <th class="text-right px-4 py-3">Actions</th>
@@ -1316,18 +2110,27 @@ function renderStudents() {
     studentQuery = e.target.value;
     renderStudentsTable();
   });
+  document.getElementById("studentClassFilterSel").addEventListener("change", (e) => {
+    studentClassFilter = e.target.value;
+    renderStudentsTable();
+  });
+  document.getElementById("studentSectionFilterSel").addEventListener("change", (e) => {
+    studentSectionFilter = e.target.value;
+    renderStudentsTable();
+  });
   document.getElementById("addStudentBtn").addEventListener("click", () => openStudentForm());
+  document.getElementById("promoteStudentsBtn").addEventListener("click", () => openPromotionModal());
 
   renderStudentsTable();
 }
 
 function renderStudentsTable() {
   const tbody = document.getElementById("studentsTbody");
-  const list = searchStudents(state, studentQuery, studentBucket)
+  const list = searchStudents(state, studentQuery, studentBucket, { class: studentClassFilter, section: studentSectionFilter })
     .sort((a, b) => a.name.localeCompare(b.name));
 
   if (!list.length) {
-    tbody.innerHTML = `<tr><td colspan="7" class="text-center text-navy-400 py-8">No students found in this bucket.</td></tr>`;
+    tbody.innerHTML = `<tr><td colspan="7" class="text-center text-navy-400 py-8">No students match this search / filter.</td></tr>`;
     return;
   }
 
@@ -1336,14 +2139,25 @@ function renderStudentsTable() {
     return `
       <tr class="hover:bg-cream/50">
         <td class="px-4 py-3 font-mono text-xs text-navy-400">${s.admissionNo}</td>
-        <td class="px-4 py-3 font-medium text-navy">${s.name}</td>
-        <td class="px-4 py-3">${classLabel(s.class, s.stream)}</td>
-        <td class="px-4 py-3 text-navy-400">${s.parentMobile || "—"}</td>
+        <td class="px-4 py-3 font-medium text-navy">
+          <div class="flex items-center gap-2">
+            ${s.photo ? `<img src="${s.photo}" class="h-7 w-7 rounded-full object-cover border border-navy-100" />` : `<span class="h-7 w-7 rounded-full bg-navy-50 text-navy-400 flex items-center justify-center text-[10px]"><i class="fa-solid fa-user"></i></span>`}
+            ${s.name}
+          </div>
+        </td>
+        <td class="px-4 py-3">${classLabel(s.class, s.stream)} · ${s.section || "A"}</td>
+        <td class="px-4 py-3 text-navy-400">
+          <div>${escapeHtml(s.parentName || "—")}</div>
+          <div class="text-xs">${s.parentMobile || "—"}</div>
+        </td>
         <td class="px-4 py-3">${s.transportOpted ? '<i class="fa-solid fa-bus text-gold-600"></i>' : '<span class="text-navy-400">—</span>'}</td>
-        <td class="px-4 py-3">${badgeHtml(status.tone, status.label)}</td>
+        <td class="px-4 py-3"><div class="flex flex-col gap-1 items-start">${badgeHtml(status.tone, status.label)}${badgeHtml(feeDueBadge(s).tone, feeDueBadge(s).label)}</div></td>
         <td class="px-4 py-3">
           <div class="flex justify-end gap-1.5">
+            ${s.parentMobile ? `<button data-wa="${s.id}" title="Send on WhatsApp" class="h-8 w-8 rounded-full hover:bg-green-50 text-navy-400 hover:text-green-600"><i class="fa-brands fa-whatsapp text-xs"></i></button>` : ""}
+            <button data-idcard="${s.id}" title="Print ID Card" class="h-8 w-8 rounded-full hover:bg-navy-50 text-navy-400 hover:text-navy"><i class="fa-solid fa-id-card text-xs"></i></button>
             <button data-edit="${s.id}" title="Edit" class="h-8 w-8 rounded-full hover:bg-navy-50 text-navy-400 hover:text-navy"><i class="fa-solid fa-pen text-xs"></i></button>
+            ${s.status !== "active" ? `<button data-restore="${s.id}" title="Restore to Active" class="h-8 w-8 rounded-full hover:bg-green-50 text-navy-400 hover:text-green-600"><i class="fa-solid fa-rotate-left text-xs"></i></button>` : ""}
             <button data-shift="${s.id}" title="Change status" class="h-8 w-8 rounded-full hover:bg-navy-50 text-navy-400 hover:text-navy"><i class="fa-solid fa-right-left text-xs"></i></button>
             <button data-delete="${s.id}" title="Remove record" class="h-8 w-8 rounded-full hover:bg-red-50 text-navy-400 hover:text-red-600"><i class="fa-solid fa-trash text-xs"></i></button>
           </div>
@@ -1352,8 +2166,19 @@ function renderStudentsTable() {
     `;
   }).join("");
 
+  tbody.querySelectorAll("[data-wa]").forEach((b) => b.addEventListener("click", () => openQuickWhatsAppModal(findStudent(state, b.dataset.wa))));
+  tbody.querySelectorAll("[data-idcard]").forEach((b) => b.addEventListener("click", () => printStudentIdCard(findStudent(state, b.dataset.idcard))));
   tbody.querySelectorAll("[data-edit]").forEach((b) => b.addEventListener("click", () => openStudentForm(findStudent(state, b.dataset.edit))));
   tbody.querySelectorAll("[data-shift]").forEach((b) => b.addEventListener("click", () => openShiftModal(findStudent(state, b.dataset.shift))));
+  tbody.querySelectorAll("[data-restore]").forEach((b) => b.addEventListener("click", () => {
+    const s = findStudent(state, b.dataset.restore);
+    openConfirmModal("Restore Student?", `${s.name} will be restored to Active status.`, () => {
+      updateStudent(state, s.id, { status: "active" });
+      showToast("Student restored to Active.");
+      renderStudentsTable();
+      renderDashboard();
+    });
+  }));
   tbody.querySelectorAll("[data-delete]").forEach((b) => b.addEventListener("click", () => {
     const s = findStudent(state, b.dataset.delete);
     openConfirmModal("Remove student record?", `This will permanently delete ${s.name}'s record (${s.admissionNo}), including fee and attendance history.`, () => {
@@ -1367,17 +2192,32 @@ function renderStudentsTable() {
 
 function openStudentForm(student) {
   const isEdit = !!student;
+  let pendingPhoto = isEdit ? (student.photo || "") : "";
   openModal(`
     <h3 class="font-display text-lg font-semibold text-navy mb-4">${isEdit ? "Edit Student" : "New Admission"}</h3>
     <form id="studentForm" class="space-y-3">
+      <div class="flex items-center gap-3">
+        <img id="f_photoPreview" src="${pendingPhoto || ""}" class="h-16 w-16 rounded-full object-cover border border-navy-100 bg-cream ${pendingPhoto ? "" : "hidden"}" />
+        <span id="f_photoPlaceholder" class="h-16 w-16 rounded-full bg-cream border border-navy-100 text-navy-400 flex items-center justify-center ${pendingPhoto ? "hidden" : ""}"><i class="fa-solid fa-camera"></i></span>
+        <label class="text-xs font-medium text-navy border border-navy-100 rounded-lg px-3 py-2 cursor-pointer hover:bg-cream">
+          Upload Photo
+          <input id="f_photo" type="file" accept="image/*" class="hidden" />
+        </label>
+      </div>
       <div>
         <label class="text-xs font-medium text-navy-400">Student Name</label>
         <input required id="f_name" value="${isEdit ? escapeHtml(student.name) : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-gold-100 focus:border-gold" />
       </div>
-      <div class="grid grid-cols-2 gap-3">
+      <div class="grid grid-cols-3 gap-3">
         <div>
           <label class="text-xs font-medium text-navy-400">Class</label>
           <select id="f_class" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">${classOptionsHtml(isEdit ? student.class : CLASS_LIST[0])}</select>
+        </div>
+        <div>
+          <label class="text-xs font-medium text-navy-400">Section</label>
+          <select id="f_section" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">
+            ${SECTIONS.map((sec) => `<option value="${sec}" ${isEdit && (student.section || "A") === sec ? "selected" : ""}>${sec}</option>`).join("")}
+          </select>
         </div>
         <div id="streamWrap">
           <label class="text-xs font-medium text-navy-400">Stream</label>
@@ -1387,14 +2227,22 @@ function openStudentForm(student) {
         </div>
       </div>
       <div>
-        <label class="text-xs font-medium text-navy-400">Roll No. <span class="text-navy-400/60">(optional)</span></label>
-        <input id="f_roll" value="${isEdit ? escapeHtml(student.rollNo || "") : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+        <label class="text-xs font-medium text-navy-400">Roll No. <span class="text-navy-400/60">(leave blank to auto-generate)</span></label>
+        <input id="f_roll" value="${isEdit ? escapeHtml(student.rollNo || "") : ""}" placeholder="Auto-generated for this class" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+        <p id="f_rollError" class="text-[11px] text-red-600 mt-1 hidden">This roll number is already used in this class.</p>
       </div>
-      <div>
-        <label class="text-xs font-medium text-navy-400">Parent Mobile Number</label>
-        <input id="f_mobile" value="${isEdit ? escapeHtml(student.parentMobile || "") : ""}" placeholder="10-digit mobile" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
-        <p class="text-[11px] text-navy-400 mt-1">Siblings can share the same parent mobile number.</p>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs font-medium text-navy-400">Parent Name</label>
+          <input id="f_parentName" value="${isEdit ? escapeHtml(student.parentName || "") : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+        </div>
+        <div>
+          <label class="text-xs font-medium text-navy-400">Parent Mobile Number</label>
+          <input id="f_mobile" value="${isEdit ? escapeHtml(student.parentMobile || "") : ""}" placeholder="10-digit mobile" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+          <p id="f_mobileError" class="text-[11px] text-red-600 mt-1 hidden">Enter a valid 10-digit mobile number.</p>
+        </div>
       </div>
+      <p class="text-[11px] text-navy-400 -mt-2">Siblings can share the same parent name and mobile number.</p>
       <div class="flex items-center justify-between">
         <label class="text-xs font-medium text-navy-400">Transport Opted</label>
         <input id="f_transport" type="checkbox" ${isEdit && student.transportOpted ? "checked" : ""} class="h-4 w-4 accent-navy" />
@@ -1413,30 +2261,220 @@ function openStudentForm(student) {
   classSel.addEventListener("change", toggleStream);
   toggleStream();
 
+  document.getElementById("f_photo").addEventListener("change", (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      pendingPhoto = reader.result;
+      const preview = document.getElementById("f_photoPreview");
+      preview.src = pendingPhoto;
+      preview.classList.remove("hidden");
+      document.getElementById("f_photoPlaceholder").classList.add("hidden");
+    };
+    reader.readAsDataURL(file);
+  });
+
   document.getElementById("cancelStudentForm").addEventListener("click", closeModal);
   document.getElementById("studentForm").addEventListener("submit", (e) => {
     e.preventDefault();
     const data = {
       name: document.getElementById("f_name").value.trim(),
       class: classSel.value,
+      section: document.getElementById("f_section").value,
       stream: document.getElementById("f_stream").value,
       rollNo: document.getElementById("f_roll").value.trim(),
+      parentName: document.getElementById("f_parentName").value.trim(),
       parentMobile: document.getElementById("f_mobile").value.trim(),
-      transportOpted: document.getElementById("f_transport").checked
+      transportOpted: document.getElementById("f_transport").checked,
+      photo: pendingPhoto
     };
-    if (!data.name) return;
 
-    if (isEdit) {
-      updateStudent(state, student.id, data);
-      showToast("Student details updated.");
-    } else {
-      addStudent(state, { ...data, status: "active" });
-      showToast("Student admitted successfully.");
+    // --- Data validation -------------------------------------------------
+    let valid = true;
+    document.getElementById("f_mobileError").classList.add("hidden");
+    document.getElementById("f_rollError").classList.add("hidden");
+
+    if (!data.name) { valid = false; }
+    if (!validateMobile(data.parentMobile)) {
+      document.getElementById("f_mobileError").classList.remove("hidden");
+      valid = false;
     }
-    closeModal();
-    renderStudentsTable();
-    renderDashboard();
+    if (data.rollNo && isRollNoTaken(state, data.class, data.rollNo, isEdit ? student.id : null)) {
+      document.getElementById("f_rollError").classList.remove("hidden");
+      valid = false;
+    }
+    if (!valid) { showToast("Please fix the highlighted fields."); return; }
+
+    const saveNow = () => {
+      if (isEdit) {
+        updateStudent(state, student.id, data);
+        showToast("Student details updated.");
+      } else {
+        addStudent(state, { ...data, status: "active" });
+        showToast("Student admitted successfully.");
+      }
+      closeModal();
+      renderStudentsTable();
+      renderDashboard();
+    };
+
+    // --- Smart duplicate-admission detection (new admissions only) ------
+    if (!isEdit) {
+      const dup = findDuplicateAdmission(state, data.name, data.parentMobile);
+      if (dup) {
+        openDuplicateAdmissionModal(dup, saveNow);
+        return;
+      }
+    }
+
+    saveNow();
   });
+}
+
+/** Warns the admin about a likely duplicate admission (same name + same
+ * parent mobile number) before saving a new admission record. */
+function openDuplicateAdmissionModal(existing, onAdmitAnyway) {
+  const status = feeStatus(existing);
+  openModal(`
+    <h3 class="font-display text-lg font-semibold text-navy mb-1"><i class="fa-solid fa-triangle-exclamation text-amber-500 mr-2"></i>Possible Duplicate Admission</h3>
+    <p class="text-sm text-navy-400 mb-4">A student with the same name and parent mobile number already exists.</p>
+    <div class="bg-cream rounded-xl border border-navy-100 p-4 text-sm space-y-1.5 mb-5">
+      <div class="flex justify-between"><span class="text-navy-400">Student Name</span><span class="font-medium text-navy">${escapeHtml(existing.name)}</span></div>
+      <div class="flex justify-between"><span class="text-navy-400">Parent Name</span><span class="font-medium text-navy">${escapeHtml(existing.parentName || "—")}</span></div>
+      <div class="flex justify-between"><span class="text-navy-400">Parent Mobile</span><span class="font-medium text-navy">${existing.parentMobile || "—"}</span></div>
+      <div class="flex justify-between"><span class="text-navy-400">Class</span><span class="font-medium text-navy">${classLabel(existing.class, existing.stream)}</span></div>
+      <div class="flex justify-between"><span class="text-navy-400">Admission No.</span><span class="font-medium text-navy">${existing.admissionNo}</span></div>
+      <div class="flex justify-between"><span class="text-navy-400">Admission Status</span>${badgeHtml(status.tone, status.label)}</div>
+    </div>
+    <div class="flex flex-wrap justify-end gap-2">
+      <button type="button" id="dupCancel" class="px-4 py-2 text-sm rounded-lg border border-navy-100 text-navy hover:bg-cream">Cancel</button>
+      <button type="button" id="dupView" class="px-4 py-2 text-sm rounded-lg border border-navy-100 text-navy hover:bg-cream">View Existing Record</button>
+      <button type="button" id="dupAnyway" class="px-4 py-2 text-sm rounded-lg bg-navy hover:bg-navy-400 text-white">Admit Anyway</button>
+    </div>
+  `, { wide: true });
+  document.getElementById("dupCancel").addEventListener("click", closeModal);
+  document.getElementById("dupView").addEventListener("click", () => {
+    closeModal();
+    openStudentForm(existing);
+  });
+  document.getElementById("dupAnyway").addEventListener("click", () => {
+    logActivity(state, `Duplicate warning ignored. Admission created manually.`);
+    onAdmitAnyway();
+  });
+}
+
+/* -------------------------------------------------------------------------
+   Class Promotion System — one-click promotion of an entire class (or a
+   selected subset) to the next class. Students left unchecked simply stay
+   in their current class. Roll numbers can optionally be regenerated for
+   the destination class, and every run is recorded in the promotion
+   history log. ---------------------------------------------------------- */
+function openPromotionModal() {
+  let fromClass = CLASS_LIST[0];
+  let toClass = CLASS_LIST[1] || CLASS_LIST[0];
+
+  const render = () => {
+    const students = state.students
+      .filter((s) => s.class === fromClass && s.status === "active")
+      .sort((a, b) => (a.rollNo || "").localeCompare(b.rollNo || "", undefined, { numeric: true }) || a.name.localeCompare(b.name));
+
+    openModal(`
+      <h3 class="font-display text-lg font-semibold text-navy mb-1"><i class="fa-solid fa-layer-group text-gold-600 mr-2"></i>Promote Students</h3>
+      <p class="text-sm text-navy-400 mb-4">Move an entire class — or just the students you select — up to the next class. Unselected students remain in their current class.</p>
+      <div class="grid grid-cols-2 gap-3 mb-3">
+        <div>
+          <label class="text-xs font-medium text-navy-400">From Class</label>
+          <select id="promoFromClass" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">${classOptionsHtml(fromClass)}</select>
+        </div>
+        <div>
+          <label class="text-xs font-medium text-navy-400">To Class</label>
+          <select id="promoToClass" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">${classOptionsHtml(toClass)}</select>
+        </div>
+      </div>
+      <div class="flex items-center justify-between mb-2">
+        <label class="flex items-center gap-2 text-xs font-medium text-navy-400">
+          <input type="checkbox" id="promoSelectAll" ${students.length ? "checked" : ""} class="h-4 w-4 accent-navy" /> Select all (${students.length})
+        </label>
+        <label class="flex items-center gap-2 text-xs font-medium text-navy-400">
+          <input type="checkbox" id="promoRegenRoll" class="h-4 w-4 accent-navy" /> Regenerate roll numbers for ${classLabel(toClass)}
+        </label>
+      </div>
+      <div id="promoStudentList" class="border border-navy-100 rounded-xl max-h-60 overflow-y-auto divide-y divide-navy-50 mb-5">
+        ${students.length ? students.map((s) => `
+          <label class="flex items-center gap-3 px-3.5 py-2.5 hover:bg-cream cursor-pointer">
+            <input type="checkbox" class="promoStudentChk h-4 w-4 accent-navy" value="${s.id}" checked />
+            <span class="flex-1 text-sm text-navy">${escapeHtml(s.name)} <span class="text-navy-400 text-xs">· Roll ${s.rollNo || "—"} · ${s.admissionNo}</span></span>
+          </label>
+        `).join("") : `<div class="p-5 text-center text-sm text-navy-400">No active students in this class.</div>`}
+      </div>
+      <div class="flex justify-end gap-2">
+        <button type="button" id="promoCancel" class="px-4 py-2 text-sm rounded-lg border border-navy-100 text-navy hover:bg-cream">Cancel</button>
+        <button type="button" id="promoConfirmBtn" ${students.length ? "" : "disabled"} class="px-4 py-2 text-sm rounded-lg bg-navy hover:bg-navy-400 disabled:opacity-40 text-white">Promote Selected</button>
+      </div>
+    `, { wide: true });
+
+    document.getElementById("promoFromClass").addEventListener("change", (e) => {
+      fromClass = e.target.value;
+      if (toClass === fromClass) {
+        const idx = CLASS_LIST.indexOf(fromClass);
+        toClass = CLASS_LIST[idx + 1] || CLASS_LIST[idx];
+      }
+      render();
+    });
+    document.getElementById("promoToClass").addEventListener("change", (e) => { toClass = e.target.value; render(); });
+    document.getElementById("promoCancel").addEventListener("click", closeModal);
+    document.getElementById("promoSelectAll").addEventListener("change", (e) => {
+      document.querySelectorAll(".promoStudentChk").forEach((c) => { c.checked = e.target.checked; });
+    });
+
+    const confirmBtn = document.getElementById("promoConfirmBtn");
+    if (confirmBtn) {
+      confirmBtn.addEventListener("click", () => {
+        const ids = Array.from(document.querySelectorAll(".promoStudentChk:checked")).map((c) => c.value);
+        const regenRoll = document.getElementById("promoRegenRoll").checked;
+        if (!ids.length) { showToast("Select at least one student to promote."); return; }
+        if (fromClass === toClass) { showToast("Choose a different destination class."); return; }
+        openConfirmModal(
+          "Promote Students?",
+          `${ids.length} student(s) will move from ${classLabel(fromClass)} to ${classLabel(toClass)}${regenRoll ? ", and roll numbers will be regenerated" : ""}. This can be reviewed later in the activity log.`,
+          () => {
+            promoteStudents(state, fromClass, toClass, ids, regenRoll);
+            showToast(`${ids.length} student(s) promoted to ${classLabel(toClass)}.`);
+            renderStudentsTable();
+            renderDashboard();
+          }
+        );
+      });
+    }
+  };
+
+  render();
+}
+
+/** Opens a printable student ID card in a new window. */
+function printStudentIdCard(student) {
+  if (!student) return;
+  const school = state.school;
+  const html = `
+    <div style="max-width:340px;margin:0 auto;border:2px solid #0f2a4a;border-radius:12px;padding:18px;text-align:center;font-family:'Segoe UI',Arial,sans-serif;">
+      <p style="font-weight:700;color:#0f2a4a;font-size:14px;margin:0;">${escapeHtml(school.shortName)}</p>
+      <p style="font-size:10px;color:#b8860b;font-weight:600;margin:2px 0 10px;">${escapeHtml(school.groupName)}</p>
+      ${student.photo
+        ? `<img src="${student.photo}" style="height:96px;width:96px;object-fit:cover;border-radius:50%;border:3px solid #0f2a4a;margin-bottom:10px;" />`
+        : `<div style="height:96px;width:96px;border-radius:50%;border:3px solid #0f2a4a;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;color:#999;font-size:12px;">No Photo</div>`}
+      <p style="font-weight:700;font-size:15px;margin:0 0 2px;">${escapeHtml(student.name)}</p>
+      <p style="font-size:12px;color:#555;margin:0 0 12px;">${classLabel(student.class, student.stream)} · Section ${student.section || "A"}</p>
+      <table style="width:100%;font-size:11.5px;border-collapse:collapse;">
+        <tr><td style="padding:4px 0;color:#777;text-align:left;">Admission No.</td><td style="padding:4px 0;text-align:right;font-weight:600;">${student.admissionNo}</td></tr>
+        <tr><td style="padding:4px 0;color:#777;text-align:left;">Roll No.</td><td style="padding:4px 0;text-align:right;font-weight:600;">${student.rollNo || "—"}</td></tr>
+        <tr><td style="padding:4px 0;color:#777;text-align:left;">Parent</td><td style="padding:4px 0;text-align:right;font-weight:600;">${escapeHtml(student.parentName || "—")}</td></tr>
+        <tr><td style="padding:4px 0;color:#777;text-align:left;">Contact</td><td style="padding:4px 0;text-align:right;font-weight:600;">${student.parentMobile || "—"}</td></tr>
+      </table>
+      <p style="font-size:10px;color:#999;margin-top:14px;">If found, please return to the school office.</p>
+    </div>
+  `;
+  openPrintWindow(`Student ID Card - ${student.name}`, html);
 }
 
 function openShiftModal(student) {
@@ -1469,11 +2507,24 @@ function openShiftModal(student) {
   document.getElementById("saveShift").addEventListener("click", () => {
     const val = document.querySelector('input[name="statusOpt"]:checked').value;
     const batch = document.getElementById("batchInput").value.trim();
-    updateStudent(state, student.id, { status: val, batch: val === "passedout" ? batch : student.batch });
-    showToast("Status updated.");
-    closeModal();
-    renderStudentsTable();
-    renderDashboard();
+
+    const apply = () => {
+      updateStudent(state, student.id, { status: val, batch: val === "passedout" ? batch : student.batch });
+      showToast("Status updated.");
+      closeModal();
+      renderStudentsTable();
+      renderDashboard();
+    };
+
+    if (val === student.status) { apply(); return; }
+
+    const labels = { active: "Active", passedout: "Passed-Out (Alumni Archive)", left: "Left School" };
+    const verb = val === "active" && student.status !== "active" ? "Restore" : "Archive";
+    openConfirmModal(
+      `${verb} ${student.name}?`,
+      `This will change the record status from "${labels[student.status]}" to "${labels[val]}".`,
+      apply
+    );
   });
 }
 
@@ -1533,6 +2584,7 @@ function renderFeeLedger() {
   const monthly = monthlyFeeFor(state, student);
   const remaining = feeRemaining(student);
   const status = feeStatus(student);
+  const dueBadge = feeDueBadge(student);
 
   wrap.innerHTML = `
     <div class="bg-white rounded-2xl border border-navy-100 p-5 sm:p-6">
@@ -1541,7 +2593,10 @@ function renderFeeLedger() {
           <p class="font-display text-lg font-semibold text-navy">${student.name}</p>
           <p class="text-xs text-navy-400 mt-0.5">${student.admissionNo} · ${classLabel(student.class, student.stream)} ${student.transportOpted ? " · <i class='fa-solid fa-bus text-gold-600'></i> Transport" : ""}</p>
         </div>
-        ${badgeHtml(status.tone, status.label)}
+        <div class="flex items-center gap-2">
+          ${badgeHtml(dueBadge.tone, dueBadge.label)}
+          ${badgeHtml(status.tone, status.label)}
+        </div>
       </div>
 
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
@@ -1550,7 +2605,7 @@ function renderFeeLedger() {
           <p class="font-semibold text-navy mt-0.5">${formatINR(monthly)}</p>
         </div>
         <div class="bg-cream rounded-xl p-3.5">
-          <p class="text-[11px] text-navy-400 uppercase tracking-wide">Total Dues</p>
+          <p class="text-[11px] text-navy-400 uppercase tracking-wide">Total Dues (after discount)</p>
           <p class="font-semibold text-navy mt-0.5">${formatINR(student.fees.totalDues)}</p>
         </div>
         <div class="bg-cream rounded-xl p-3.5">
@@ -1563,12 +2618,24 @@ function renderFeeLedger() {
         </div>
       </div>
 
-      <div class="mb-3">
-        <label class="text-xs font-medium text-navy-400">Adjust Total Dues (e.g. for annual session fee)</label>
-        <div class="flex gap-2 mt-1">
-          <input id="duesInput" type="number" min="0" value="${student.fees.totalDues}" class="flex-1 border border-navy-100 rounded-lg px-3 py-2 text-sm" />
-          <button id="saveDuesBtn" class="px-3 py-2 text-sm rounded-lg border border-navy-100 hover:bg-cream text-navy">Update</button>
+      <div class="grid sm:grid-cols-3 gap-3 mb-3">
+        <div>
+          <label class="text-xs font-medium text-navy-400">Adjust Total Dues (e.g. annual session fee)</label>
+          <div class="flex gap-2 mt-1">
+            <input id="duesInput" type="number" min="0" value="${student.fees.totalDues}" class="flex-1 border border-navy-100 rounded-lg px-3 py-2 text-sm" />
+          </div>
         </div>
+        <div>
+          <label class="text-xs font-medium text-navy-400">Scholarship / Discount (%)</label>
+          <input id="discountInput" type="number" min="0" max="100" value="${student.fees.discountPercent || 0}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2 text-sm" />
+        </div>
+        <div>
+          <label class="text-xs font-medium text-navy-400">Fee Due Date</label>
+          <input id="dueDateInput" type="date" value="${student.fees.dueDate || ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2 text-sm" />
+        </div>
+      </div>
+      <div class="flex justify-end mb-3">
+        <button id="saveDuesBtn" class="px-3 py-2 text-sm rounded-lg border border-navy-100 hover:bg-cream text-navy">Save Dues / Discount / Due Date</button>
       </div>
 
       <div class="border-t border-navy-100 pt-5 mt-5 grid sm:grid-cols-[1fr,auto] gap-3 items-end">
@@ -1609,12 +2676,20 @@ function renderFeeLedger() {
       </div>
     </div>
   `;
+            
+  document.getElementById("discountInput").addEventListener("input", (e) => {
+    const pct = Math.max(0, Math.min(100, Number(e.target.value) || 0));
+    document.getElementById("duesInput").value = applyDiscount(monthly * 12, pct);
+  });
 
   document.getElementById("saveDuesBtn").addEventListener("click", () => {
     const val = Math.max(0, Number(document.getElementById("duesInput").value) || 0);
-    updateStudent(state, student.id, { fees: { ...student.fees, totalDues: val } });
-    showToast("Total dues updated.");
+    const discountPercent = Math.max(0, Math.min(100, Number(document.getElementById("discountInput").value) || 0));
+    const dueDate = document.getElementById("dueDateInput").value || student.fees.dueDate;
+    updateStudent(state, student.id, { fees: { ...student.fees, totalDues: val, discountPercent, dueDate } });
+    showToast("Fee details updated — discount automatically applied to dues.");
     renderFeeLedger();
+    renderDashboard();
   });
 
   const collectBtn = document.getElementById("collectPaymentBtn");
@@ -1664,19 +2739,72 @@ function renderAttendance() {
       <button id="saveTotalDaysBtn" class="px-4 py-2.5 text-sm rounded-lg bg-navy hover:bg-navy-400 text-white">Save</button>
     </div>
 
-    <div id="attTableWrap" class="bg-white rounded-2xl border border-navy-100 overflow-x-auto"></div>
+    <div id="attTableWrap" class="bg-white rounded-2xl border border-navy-100 overflow-x-auto mb-6"></div>
+
+    <div class="bg-white rounded-2xl border border-navy-100 p-5">
+      <h3 class="font-semibold text-navy text-sm mb-1"><i class="fa-solid fa-triangle-exclamation text-red-500 mr-1.5"></i>Low Attendance List (below ${LOW_ATTENDANCE_THRESHOLD}%)</h3>
+      <p class="text-xs text-navy-400 mb-3">For ${classLabel(attClass)} · ${monthLabel(attMonth)}. Send a quick WhatsApp reminder straight to the parent.</p>
+      <div id="lowAttendanceWrap"></div>
+    </div>
   `;
 
-  document.getElementById("attClassSel").addEventListener("change", (e) => { attClass = e.target.value; renderAttendanceTable(); });
-  document.getElementById("attMonthSel").addEventListener("change", (e) => { attMonth = e.target.value || currentMonthStr(); renderAttendanceTable(); });
+  document.getElementById("attClassSel").addEventListener("change", (e) => { attClass = e.target.value; renderAttendanceTable(); renderAttendance(); });
+  document.getElementById("attMonthSel").addEventListener("change", (e) => { attMonth = e.target.value || currentMonthStr(); renderAttendanceTable(); renderAttendance(); });
   document.getElementById("saveTotalDaysBtn").addEventListener("click", () => {
     const val = document.getElementById("attTotalDays").value;
     setAttendanceTotalDays(state, attClass, attMonth, val);
+    logActivity(state, `Set total school days to ${val} for ${classLabel(attClass)} — ${monthLabel(attMonth)}.`);
     showToast("Total days saved for " + classLabel(attClass) + ".");
     renderAttendanceTable();
+    renderLowAttendanceList();
   });
 
   renderAttendanceTable();
+  renderLowAttendanceList();
+}
+
+function renderLowAttendanceList() {
+  const wrap = document.getElementById("lowAttendanceWrap");
+  if (!wrap) return;
+  const record = getAttendance(state, attClass, attMonth);
+  const totalDays = record.totalDays || 0;
+  const students = state.students.filter((s) => s.class === attClass && s.status === "active");
+
+  if (!totalDays || !students.length) {
+    wrap.innerHTML = `<p class="text-sm text-navy-400 py-4 text-center">No attendance data yet for this class / month.</p>`;
+    return;
+  }
+
+  const lowList = students
+    .map((s) => ({ student: s, present: record.records[s.id] ?? 0, pct: attendancePercent(record.records[s.id] ?? 0, totalDays) }))
+    .filter((r) => r.pct < LOW_ATTENDANCE_THRESHOLD)
+    .sort((a, b) => a.pct - b.pct);
+
+  if (!lowList.length) {
+    wrap.innerHTML = `<p class="text-sm text-green-600 py-4 text-center"><i class="fa-solid fa-circle-check mr-1"></i>No students below ${LOW_ATTENDANCE_THRESHOLD}% attendance. 🎉</p>`;
+    return;
+  }
+
+  wrap.innerHTML = `
+    <div class="divide-y divide-navy-50">
+      ${lowList.map((r) => {
+        const s = r.student;
+        const msg = `Dear Parent, this is to inform you that ${s.name}'s (${classLabel(s.class, s.stream)}) attendance this month is ${r.pct}%, which is below the required ${LOW_ATTENDANCE_THRESHOLD}%. Kindly ensure regular attendance. - ${escapeHtml(state.school.shortName)}`;
+        return `
+          <div class="flex items-center justify-between py-2.5 text-sm">
+            <div>
+              <span class="font-medium text-navy">${s.name}</span>
+              <span class="text-navy-400 text-xs"> · ${s.admissionNo} · ${r.present}/${totalDays} days</span>
+              <span class="ml-1">${badgeHtml("red", r.pct + "%")}</span>
+            </div>
+            ${s.parentMobile
+              ? `<a href="${whatsappLink(s.parentMobile, msg)}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-medium text-green-700 bg-green-50 hover:bg-green-100 px-3 py-1.5 rounded-full"><i class="fa-brands fa-whatsapp"></i>Send Reminder</a>`
+              : `<span class="text-xs text-navy-400">No mobile on file</span>`}
+          </div>
+        `;
+      }).join("")}
+    </div>
+  `;
 }
 
 function renderAttendanceTable() {
@@ -1732,6 +2860,7 @@ function renderAttendanceTable() {
     inp.addEventListener("change", () => {
       setStudentAttendance(state, attClass, attMonth, inp.dataset.attInput, inp.value);
       renderAttendanceTable();
+      renderLowAttendanceList();
     });
   });
 }
@@ -1882,13 +3011,684 @@ function renderExports() {
 }
 
 /* ==================================================================== */
+/*  QUICK SEND — single-student WhatsApp modal (used from Students tab)  */
+/* ==================================================================== */
+function openQuickWhatsAppModal(student) {
+  if (!student || !student.parentMobile) { showToast("No parent mobile number on file."); return; }
+  openModal(`
+    <h3 class="font-display text-lg font-semibold text-navy mb-1">Send WhatsApp Notice</h3>
+    <p class="text-xs text-navy-400 mb-4">${escapeHtml(student.name)} · ${classLabel(student.class, student.stream)} · ${displayPhone(student.parentMobile)}</p>
+    <div class="space-y-3">
+      <div>
+        <label class="text-xs font-medium text-navy-400">Notice Type</label>
+        <select id="qwaType" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">
+          ${Object.entries(NOTICE_TYPE_LABELS).map(([k, v]) => `<option value="${k}">${v}</option>`).join("")}
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">Message</label>
+        <textarea id="qwaMessage" rows="5" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm"></textarea>
+        <p class="text-[11px] text-navy-400 mt-1">Placeholders auto-filled: student name, class, due amount, attendance %.</p>
+      </div>
+    </div>
+    <div class="flex justify-end gap-2 mt-5">
+      <button id="qwaCancel" class="px-4 py-2 text-sm rounded-lg border border-navy-100 text-navy hover:bg-cream">Cancel</button>
+      <button id="qwaSend" class="px-4 py-2 text-sm rounded-lg bg-green-600 hover:bg-green-700 text-white inline-flex items-center gap-1.5"><i class="fa-brands fa-whatsapp"></i>Open WhatsApp</button>
+    </div>
+  `, { wide: false });
+
+  function fillTemplate() {
+    const t = document.getElementById("qwaType").value;
+    const extra = {};
+    if (t === "attendance") {
+      const record = getAttendance(state, student.class, currentMonthStr());
+      extra.attendancePct = record.totalDays ? attendancePercent(record.records[student.id] ?? 0, record.totalDays) : undefined;
+    }
+    document.getElementById("qwaMessage").value = resolveNoticeMessage(NOTICE_TEMPLATES[t], state, student, extra);
+  }
+  document.getElementById("qwaType").addEventListener("change", fillTemplate);
+  fillTemplate();
+
+  document.getElementById("qwaCancel").addEventListener("click", closeModal);
+  document.getElementById("qwaSend").addEventListener("click", () => {
+    const type = document.getElementById("qwaType").value;
+    const msg = document.getElementById("qwaMessage").value.trim();
+    if (!msg) { showToast("Message can't be empty."); return; }
+    window.open(whatsappLink(student.parentMobile, msg), "_blank", "noopener");
+    logNotice(state, student, NOTICE_TYPE_LABELS[type], msg, "Opened");
+    closeModal();
+    showToast("WhatsApp opened for " + student.name + ".");
+    if (currentTab === "notices") renderNotices();
+  });
+}
+
+/* ==================================================================== */
+/*  NOTICES — WhatsApp notice system                                    */
+/* ==================================================================== */
+function currentNoticeRecipients() {
+  if (noticeRecipientMode === "single") {
+    const s = findStudent(state, noticeSelectedStudentId);
+    return s ? [{ student: s, extra: {} }] : [];
+  }
+  if (noticeRecipientMode === "class") {
+    return state.students
+      .filter((s) => s.class === noticeSelectedClass && s.status === "active")
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((s) => ({ student: s, extra: {} }));
+  }
+  if (noticeRecipientMode === "feeDefaulters") {
+    return feeDefaulterStudents(state).map((s) => ({ student: s, extra: { dueAmount: feeRemaining(s) } }));
+  }
+  if (noticeRecipientMode === "lowAttendance") {
+    return lowAttendanceStudentsForMonth(state, noticeMonth).map((r) => ({ student: r.student, extra: { attendancePct: r.pct } }));
+  }
+  return [];
+}
+
+function renderNotices() {
+  const el = document.getElementById("tab-notices");
+  const activeStudents = state.students.filter((s) => s.status === "active").sort((a, b) => a.name.localeCompare(b.name));
+
+  el.innerHTML = `
+    <h2 class="font-display text-2xl font-semibold text-navy mb-1"><i class="fa-brands fa-whatsapp text-green-600 mr-1"></i>WhatsApp Notices</h2>
+    <p class="text-sm text-navy-400 mb-6">Compose a notice, pick recipients, and send via WhatsApp — one tap opens a prefilled chat per parent. No data leaves this device except what you choose to open in WhatsApp.</p>
+
+    <div class="grid lg:grid-cols-[1fr,340px] gap-5 mb-8">
+      <div class="bg-white rounded-2xl border border-navy-100 p-5 space-y-4">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs font-medium text-navy-400">Notice Type</label>
+            <select id="ntcType" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">
+              ${Object.entries(NOTICE_TYPE_LABELS).map(([k, v]) => `<option value="${k}" ${k === noticeType ? "selected" : ""}>${v}</option>`).join("")}
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-medium text-navy-400">Recipients</label>
+            <select id="ntcRecipientMode" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">
+              <option value="single" ${noticeRecipientMode === "single" ? "selected" : ""}>Single Student</option>
+              <option value="class" ${noticeRecipientMode === "class" ? "selected" : ""}>Entire Class</option>
+              <option value="feeDefaulters" ${noticeRecipientMode === "feeDefaulters" ? "selected" : ""}>Fee Defaulters</option>
+              <option value="lowAttendance" ${noticeRecipientMode === "lowAttendance" ? "selected" : ""}>Low Attendance Students</option>
+            </select>
+          </div>
+        </div>
+
+        <div id="ntcRecipientExtra"></div>
+
+        <div>
+          <label class="text-xs font-medium text-navy-400">Message Template</label>
+          <textarea id="ntcMessage" rows="4" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">${escapeHtml(noticeMessageDraft)}</textarea>
+          <p class="text-[11px] text-navy-400 mt-1">Placeholders: <code class="bg-cream px-1 rounded">{{name}}</code> <code class="bg-cream px-1 rounded">{{class}}</code> <code class="bg-cream px-1 rounded">{{dueAmount}}</code> <code class="bg-cream px-1 rounded">{{attendance}}</code> <code class="bg-cream px-1 rounded">{{school}}</code> <code class="bg-cream px-1 rounded">{{parentName}}</code> — auto-replaced per student.</p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 items-center justify-between">
+          <p class="text-xs text-navy-400"><span id="ntcRecipientCount">0</span> recipient(s) with a WhatsApp number on file.</p>
+          <button id="ntcBulkStart" class="px-4 py-2.5 text-sm rounded-lg bg-green-600 hover:bg-green-700 text-white inline-flex items-center gap-2"><i class="fa-brands fa-whatsapp"></i>Start Bulk Send</button>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-navy-100 p-5 h-fit">
+        <h3 class="font-semibold text-navy text-sm mb-2">Preview</h3>
+        <div id="ntcPreview" class="text-sm text-navy-400 bg-cream rounded-lg p-3 whitespace-pre-wrap min-h-[90px]">Select recipients to preview the message.</div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-navy-100 p-5 mb-8">
+      <h3 class="font-semibold text-navy text-sm mb-1">Recipient List</h3>
+      <p class="text-xs text-navy-400 mb-3">Send individually, or use Bulk Send above to go through the whole list one tap at a time.</p>
+      <div id="ntcRecipientList"></div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-navy-100 p-5">
+      <h3 class="font-semibold text-navy text-sm mb-1"><i class="fa-solid fa-clock-rotate-left text-gold-600 mr-1.5"></i>Sent Log</h3>
+      <p class="text-xs text-navy-400 mb-3">Most recent notices opened via WhatsApp from this device.</p>
+      <div id="ntcSentLog" class="overflow-x-auto"></div>
+    </div>
+  `;
+
+  function renderRecipientExtra() {
+    const wrap = document.getElementById("ntcRecipientExtra");
+    if (noticeRecipientMode === "single") {
+      wrap.innerHTML = `
+        <label class="text-xs font-medium text-navy-400">Student</label>
+        <select id="ntcSingleStudent" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">
+          <option value="">Select a student…</option>
+          ${activeStudents.map((s) => `<option value="${s.id}" ${s.id === noticeSelectedStudentId ? "selected" : ""}>${escapeHtml(s.name)} — ${classLabel(s.class, s.stream)}</option>`).join("")}
+        </select>
+      `;
+      document.getElementById("ntcSingleStudent").addEventListener("change", (e) => { noticeSelectedStudentId = e.target.value; refresh(); });
+    } else if (noticeRecipientMode === "class") {
+      wrap.innerHTML = `
+        <label class="text-xs font-medium text-navy-400">Class</label>
+        <select id="ntcClassSel" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">${classOptionsHtml(noticeSelectedClass)}</select>
+      `;
+      document.getElementById("ntcClassSel").addEventListener("change", (e) => { noticeSelectedClass = e.target.value; refresh(); });
+    } else if (noticeRecipientMode === "lowAttendance") {
+      wrap.innerHTML = `
+        <label class="text-xs font-medium text-navy-400">Month</label>
+        <input id="ntcMonthSel" type="month" value="${noticeMonth}" class="mt-1 border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+      `;
+      document.getElementById("ntcMonthSel").addEventListener("change", (e) => { noticeMonth = e.target.value || currentMonthStr(); refresh(); });
+    } else {
+      wrap.innerHTML = `<p class="text-xs text-navy-400">All active students with pending fee dues are included automatically.</p>`;
+    }
+  }
+
+  function renderList() {
+    const recipients = currentNoticeRecipients();
+    const withPhone = recipients.filter((r) => r.student.parentMobile);
+    document.getElementById("ntcRecipientCount").textContent = withPhone.length;
+
+    const previewEl = document.getElementById("ntcPreview");
+    if (recipients.length) {
+      previewEl.textContent = resolveNoticeMessage(document.getElementById("ntcMessage").value, state, recipients[0].student, recipients[0].extra);
+    } else {
+      previewEl.textContent = "Select recipients to preview the message.";
+    }
+
+    const listWrap = document.getElementById("ntcRecipientList");
+    if (!recipients.length) {
+      listWrap.innerHTML = `<p class="text-sm text-navy-400 py-4 text-center">No recipients match this selection.</p>`;
+      return;
+    }
+    listWrap.innerHTML = `
+      <div class="divide-y divide-navy-50">
+        ${recipients.map((r) => {
+          const s = r.student;
+          const msg = resolveNoticeMessage(document.getElementById("ntcMessage").value, state, s, r.extra);
+          return `
+            <div class="flex items-center justify-between py-2.5 text-sm gap-2">
+              <div class="min-w-0">
+                <span class="font-medium text-navy">${escapeHtml(s.name)}</span>
+                <span class="text-navy-400 text-xs"> · ${classLabel(s.class, s.stream)} · ${displayPhone(s.parentMobile)}</span>
+              </div>
+              ${s.parentMobile
+                ? `<a href="${whatsappLink(s.parentMobile, msg)}" target="_blank" rel="noopener" data-ntc-send="${s.id}" class="shrink-0 inline-flex items-center gap-1.5 text-xs font-medium text-green-700 bg-green-50 hover:bg-green-100 px-3 py-1.5 rounded-full"><i class="fa-brands fa-whatsapp"></i>Send</a>`
+                : `<span class="text-xs text-navy-400 shrink-0">No mobile on file</span>`}
+            </div>
+          `;
+        }).join("")}
+      </div>
+    `;
+    listWrap.querySelectorAll("[data-ntc-send]").forEach((a) => {
+      a.addEventListener("click", () => {
+        const s = findStudent(state, a.dataset.ntcSend);
+        const type = document.getElementById("ntcType").value;
+        const r = recipients.find((x) => x.student.id === s.id);
+        const msg = resolveNoticeMessage(document.getElementById("ntcMessage").value, state, s, r ? r.extra : {});
+        logNotice(state, s, NOTICE_TYPE_LABELS[type], msg, "Opened");
+        showToast("WhatsApp opened for " + s.name + ".");
+        renderSentLog();
+      });
+    });
+  }
+
+  function renderSentLog() {
+    const wrap = document.getElementById("ntcSentLog");
+    const log = state.noticeLog || [];
+    if (!log.length) {
+      wrap.innerHTML = `<p class="text-sm text-navy-400 py-4 text-center">No notices sent yet.</p>`;
+      return;
+    }
+    wrap.innerHTML = `
+      <table class="w-full text-sm min-w-[560px]">
+        <thead class="bg-cream text-navy-400 text-xs uppercase tracking-wide">
+          <tr>
+            <th class="text-left px-4 py-2.5">Student</th>
+            <th class="text-left px-4 py-2.5">Type</th>
+            <th class="text-left px-4 py-2.5">Date &amp; Time</th>
+            <th class="text-left px-4 py-2.5">Status</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-navy-50">
+          ${log.slice(0, 50).map((n) => `
+            <tr>
+              <td class="px-4 py-2.5 font-medium text-navy">${escapeHtml(n.studentName)}</td>
+              <td class="px-4 py-2.5 text-navy-400">${escapeHtml(n.type)}</td>
+              <td class="px-4 py-2.5 text-navy-400">${formatDateTime(n.date)}</td>
+              <td class="px-4 py-2.5">${badgeHtml(n.status === "Sent" ? "green" : "amber", n.status)}</td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    `;
+  }
+
+  function refresh() {
+    renderRecipientExtra();
+    renderList();
+    renderSentLog();
+  }
+
+  document.getElementById("ntcType").addEventListener("change", (e) => {
+    noticeType = e.target.value;
+    noticeMessageDraft = NOTICE_TEMPLATES[noticeType];
+    document.getElementById("ntcMessage").value = noticeMessageDraft;
+    renderList();
+  });
+  document.getElementById("ntcRecipientMode").addEventListener("change", (e) => { noticeRecipientMode = e.target.value; refresh(); });
+  document.getElementById("ntcMessage").addEventListener("input", (e) => { noticeMessageDraft = e.target.value; renderList(); });
+  document.getElementById("ntcBulkStart").addEventListener("click", () => {
+    const recipients = currentNoticeRecipients().filter((r) => r.student.parentMobile);
+    if (!recipients.length) { showToast("No recipients with a WhatsApp number."); return; }
+    bulkQueue = recipients.map((r) => ({ student: r.student, message: resolveNoticeMessage(document.getElementById("ntcMessage").value, state, r.student, r.extra) }));
+    bulkIndex = 0;
+    openBulkSendModal();
+  });
+
+  refresh();
+}
+
+/** Bulk send wizard — opens one WhatsApp window at a time via explicit user clicks (avoids popup blocking). */
+function openBulkSendModal() {
+  const type = document.getElementById("ntcType") ? document.getElementById("ntcType").value : noticeType;
+  const total = bulkQueue.length;
+
+  function render() {
+    if (bulkIndex >= total) {
+      openModal(`
+        <h3 class="font-display text-lg font-semibold text-navy mb-2"><i class="fa-solid fa-circle-check text-green-600 mr-1.5"></i>Bulk Send Complete</h3>
+        <p class="text-sm text-navy-400 mb-6">Opened WhatsApp for ${total} recipient(s).</p>
+        <div class="flex justify-end">
+          <button id="bulkDone" class="px-4 py-2 text-sm rounded-lg bg-navy hover:bg-navy-400 text-white">Done</button>
+        </div>
+      `);
+      document.getElementById("bulkDone").addEventListener("click", () => { closeModal(); renderNotices(); });
+      return;
+    }
+    const current = bulkQueue[bulkIndex];
+    openModal(`
+      <h3 class="font-display text-lg font-semibold text-navy mb-1">Bulk Send — ${bulkIndex + 1} of ${total}</h3>
+      <p class="text-xs text-navy-400 mb-4">${escapeHtml(current.student.name)} · ${classLabel(current.student.class, current.student.stream)} · ${displayPhone(current.student.parentMobile)}</p>
+      <div class="bg-cream rounded-lg p-3 text-sm text-navy-400 whitespace-pre-wrap mb-5">${escapeHtml(current.message)}</div>
+      <div class="flex justify-between gap-2">
+        <button id="bulkSkip" class="px-4 py-2 text-sm rounded-lg border border-navy-100 text-navy hover:bg-cream">Skip</button>
+        <button id="bulkOpen" class="px-4 py-2 text-sm rounded-lg bg-green-600 hover:bg-green-700 text-white inline-flex items-center gap-2"><i class="fa-brands fa-whatsapp"></i>Open WhatsApp &amp; Next</button>
+      </div>
+    `, { wide: false });
+    document.getElementById("bulkSkip").addEventListener("click", () => { bulkIndex += 1; render(); });
+    document.getElementById("bulkOpen").addEventListener("click", () => {
+      window.open(whatsappLink(current.student.parentMobile, current.message), "_blank", "noopener");
+      logNotice(state, current.student, NOTICE_TYPE_LABELS[type], current.message, "Sent");
+      bulkIndex += 1;
+      render();
+    });
+  }
+  render();
+}
+
+/* ==================================================================== */
+/*  FACULTY & STAFF                                                     */
+/* ==================================================================== */
+function renderFaculty() {
+  const el = document.getElementById("tab-faculty");
+  el.innerHTML = `
+    <h2 class="font-display text-2xl font-semibold text-navy mb-1">Faculty &amp; Staff</h2>
+    <p class="text-sm text-navy-400 mb-6">Manage the team shown on the public "Faculty & Staff" section.</p>
+    <div class="mb-5">
+      <button id="addFacultyBtn" class="px-4 py-2.5 text-sm rounded-lg bg-navy hover:bg-navy-400 text-white inline-flex items-center gap-2"><i class="fa-solid fa-plus"></i>Add Faculty / Staff</button>
+    </div>
+    <div id="facultyList" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+  `;
+  document.getElementById("addFacultyBtn").addEventListener("click", () => openFacultyForm());
+  renderFacultyList();
+}
+
+function renderFacultyList() {
+  const wrap = document.getElementById("facultyList");
+  const list = state.school.faculty || [];
+  if (!list.length) {
+    wrap.innerHTML = `<p class="text-sm text-navy-400 py-4 col-span-full text-center">No faculty added yet.</p>`;
+    return;
+  }
+  wrap.innerHTML = list.map((f) => `
+    <div class="bg-white rounded-2xl border border-navy-100 p-4 flex flex-col items-center text-center">
+      ${f.photo ? `<img src="${f.photo}" class="h-20 w-20 rounded-full object-cover border border-navy-100 mb-3" />` : `<span class="h-20 w-20 rounded-full bg-cream border border-navy-100 text-navy-400 flex items-center justify-center mb-3"><i class="fa-solid fa-user text-xl"></i></span>`}
+      <p class="font-semibold text-navy text-sm">${escapeHtml(f.name)}</p>
+      <p class="text-xs text-gold-600 font-medium">${escapeHtml(f.designation)}</p>
+      <p class="text-xs text-navy-400 mt-1">${escapeHtml(f.qualification || "")}</p>
+      ${f.contact ? `<p class="text-xs text-navy-400">${escapeHtml(f.contact)}</p>` : ""}
+      <div class="flex gap-1.5 mt-3">
+        <button data-edit-fac="${f.id}" class="h-8 w-8 rounded-full hover:bg-navy-50 text-navy-400 hover:text-navy"><i class="fa-solid fa-pen text-xs"></i></button>
+        <button data-del-fac="${f.id}" class="h-8 w-8 rounded-full hover:bg-red-50 text-navy-400 hover:text-red-600"><i class="fa-solid fa-trash text-xs"></i></button>
+      </div>
+    </div>
+  `).join("");
+  wrap.querySelectorAll("[data-edit-fac]").forEach((b) => b.addEventListener("click", () => openFacultyForm(state.school.faculty.find((f) => f.id === b.dataset.editFac))));
+  wrap.querySelectorAll("[data-del-fac]").forEach((b) => b.addEventListener("click", () => {
+    openConfirmModal("Remove faculty member?", "This will remove them from the public website.", () => {
+      state.school.faculty = state.school.faculty.filter((f) => f.id !== b.dataset.delFac);
+      saveState(state);
+      renderFacultyList();
+      showToast("Removed.");
+    });
+  }));
+}
+
+function openFacultyForm(faculty) {
+  const isEdit = !!faculty;
+  let pendingPhoto = isEdit ? (faculty.photo || "") : "";
+  openModal(`
+    <h3 class="font-display text-lg font-semibold text-navy mb-4">${isEdit ? "Edit" : "Add"} Faculty / Staff</h3>
+    <form id="facForm" class="space-y-3">
+      <div class="flex items-center gap-3">
+        <img id="fac_photoPreview" src="${pendingPhoto}" class="h-16 w-16 rounded-full object-cover border border-navy-100 bg-cream ${pendingPhoto ? "" : "hidden"}" />
+        <span id="fac_photoPlaceholder" class="h-16 w-16 rounded-full bg-cream border border-navy-100 text-navy-400 flex items-center justify-center ${pendingPhoto ? "hidden" : ""}"><i class="fa-solid fa-camera"></i></span>
+        <label class="text-xs font-medium text-navy border border-navy-100 rounded-lg px-3 py-2 cursor-pointer hover:bg-cream">
+          Upload Photo
+          <input id="fac_photoInput" type="file" accept="image/*" class="hidden" />
+        </label>
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">Name</label>
+        <input id="fac_name" required value="${isEdit ? escapeHtml(faculty.name) : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">Designation</label>
+        <input id="fac_designation" required value="${isEdit ? escapeHtml(faculty.designation) : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" placeholder="e.g. Senior Teacher" />
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">Qualification</label>
+        <input id="fac_qualification" value="${isEdit ? escapeHtml(faculty.qualification || "") : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" placeholder="e.g. M.Sc., B.Ed." />
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">Contact (optional)</label>
+        <input id="fac_contact" value="${isEdit ? escapeHtml(faculty.contact || "") : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button type="button" id="facCancel" class="px-4 py-2 text-sm rounded-lg border border-navy-100 text-navy hover:bg-cream">Cancel</button>
+        <button type="submit" class="px-4 py-2 text-sm rounded-lg bg-navy hover:bg-navy-400 text-white">${isEdit ? "Save Changes" : "Add"}</button>
+      </div>
+    </form>
+  `, { wide: false });
+
+  document.getElementById("fac_photoInput").addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      pendingPhoto = reader.result;
+      document.getElementById("fac_photoPreview").src = pendingPhoto;
+      document.getElementById("fac_photoPreview").classList.remove("hidden");
+      document.getElementById("fac_photoPlaceholder").classList.add("hidden");
+    };
+    reader.readAsDataURL(file);
+  });
+
+  document.getElementById("facCancel").addEventListener("click", closeModal);
+  document.getElementById("facForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById("fac_name").value.trim(),
+      designation: document.getElementById("fac_designation").value.trim(),
+      qualification: document.getElementById("fac_qualification").value.trim(),
+      contact: document.getElementById("fac_contact").value.trim(),
+      photo: pendingPhoto
+    };
+    if (!data.name || !data.designation) { showToast("Name and designation are required."); return; }
+    if (isEdit) {
+      Object.assign(faculty, data);
+    } else {
+      state.school.faculty.push({ id: uid("fac"), ...data });
+    }
+    saveState(state);
+    closeModal();
+    renderFacultyList();
+    showToast(isEdit ? "Faculty updated." : "Faculty added.");
+  });
+}
+
+/* ==================================================================== */
+/*  ENQUIRIES — public contact form submissions                         */
+/* ==================================================================== */
+function renderEnquiries() {
+  const el = document.getElementById("tab-enquiries");
+  el.innerHTML = `
+    <h2 class="font-display text-2xl font-semibold text-navy mb-1">Enquiries</h2>
+    <p class="text-sm text-navy-400 mb-6">Messages submitted through the public contact / enquiry form.</p>
+    <div class="flex gap-2 mb-4" id="enqFilterBar">
+      <button data-enqf="all" class="enq-filter-btn tab-btn active text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100">All</button>
+      <button data-enqf="new" class="enq-filter-btn tab-btn text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100">New</button>
+      <button data-enqf="responded" class="enq-filter-btn tab-btn text-xs sm:text-sm font-medium px-3.5 py-2 rounded-full border border-navy-100">Responded</button>
+    </div>
+    <div id="enqList" class="space-y-3"></div>
+  `;
+  let filter = "all";
+  document.querySelectorAll(".enq-filter-btn").forEach((b) => {
+    b.addEventListener("click", () => {
+      filter = b.dataset.enqf;
+      document.querySelectorAll(".enq-filter-btn").forEach((x) => x.classList.remove("active"));
+      b.classList.add("active");
+      renderList();
+    });
+  });
+
+  function renderList() {
+    const wrap = document.getElementById("enqList");
+    const list = (state.enquiries || []).filter((e) => filter === "all" || e.status === filter);
+    if (!list.length) {
+      wrap.innerHTML = `<p class="text-sm text-navy-400 py-8 text-center">No enquiries here.</p>`;
+      return;
+    }
+    wrap.innerHTML = list.map((e) => `
+      <div class="bg-white rounded-2xl border border-navy-100 p-5">
+        <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
+          <div>
+            <p class="font-semibold text-navy text-sm">${escapeHtml(e.name || "—")}</p>
+            <p class="text-xs text-navy-400">${escapeHtml(e.phone || "—")} ${e.email ? " · " + escapeHtml(e.email) : ""}</p>
+          </div>
+          <div class="flex items-center gap-2">
+            ${badgeHtml(e.status === "responded" ? "green" : "amber", e.status === "responded" ? "Responded" : "New")}
+            <span class="text-xs text-navy-400">${formatDateTime(e.date)}</span>
+          </div>
+        </div>
+        <p class="text-sm text-navy-400 mb-3">${escapeHtml(e.message || "")}</p>
+        ${e.responseNote ? `<p class="text-xs text-navy-400 bg-cream rounded-lg p-2 mb-3"><span class="font-medium text-navy">Response note:</span> ${escapeHtml(e.responseNote)}</p>` : ""}
+        <div class="flex flex-wrap gap-2">
+          ${e.phone ? `<a href="${whatsappLink(e.phone, "Hello " + (e.name || "") + ", thank you for reaching out to " + escapeHtml(state.school.shortName) + ". ")}" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 text-xs font-medium text-green-700 bg-green-50 hover:bg-green-100 px-3 py-1.5 rounded-full"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>` : ""}
+          <button data-respond="${e.id}" class="text-xs font-medium text-navy bg-navy-50 hover:bg-navy-100 px-3 py-1.5 rounded-full">${e.status === "responded" ? "Edit Response Note" : "Mark as Responded"}</button>
+        </div>
+      </div>
+    `).join("");
+
+    wrap.querySelectorAll("[data-respond]").forEach((b) => {
+      b.addEventListener("click", () => {
+        const enquiry = state.enquiries.find((x) => x.id === b.dataset.respond);
+        openModal(`
+          <h3 class="font-display text-lg font-semibold text-navy mb-3">Response Note</h3>
+          <textarea id="enqNote" rows="4" class="w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" placeholder="e.g. Called parent, scheduled a campus visit for Monday.">${escapeHtml(enquiry.responseNote || "")}</textarea>
+          <div class="flex justify-end gap-2 mt-4">
+            <button id="enqNoteCancel" class="px-4 py-2 text-sm rounded-lg border border-navy-100 text-navy hover:bg-cream">Cancel</button>
+            <button id="enqNoteSave" class="px-4 py-2 text-sm rounded-lg bg-navy hover:bg-navy-400 text-white">Save</button>
+          </div>
+        `);
+        document.getElementById("enqNoteCancel").addEventListener("click", closeModal);
+        document.getElementById("enqNoteSave").addEventListener("click", () => {
+          markEnquiryResponded(state, enquiry.id, document.getElementById("enqNote").value.trim());
+          closeModal();
+          renderList();
+          showToast("Enquiry updated.");
+        });
+      });
+    });
+  }
+  renderList();
+}
+
+/* ==================================================================== */
+/*  ADMIN & ROLES                                                        */
+/* ==================================================================== */
+function renderAdminRoles() {
+  const el = document.getElementById("tab-admin");
+  el.innerHTML = `
+    <h2 class="font-display text-2xl font-semibold text-navy mb-1">Admin &amp; Roles</h2>
+    <p class="text-sm text-navy-400 mb-6">Manage staff accounts, permissions, and review recent activity.</p>
+
+    <div class="grid lg:grid-cols-[1.3fr,1fr] gap-5 mb-5">
+      <div class="bg-white rounded-2xl border border-navy-100 p-5">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-semibold text-navy text-sm"><i class="fa-solid fa-users-gear text-gold-600 mr-1.5"></i>Admin Accounts</h3>
+          <button id="addAdminBtn" class="text-xs font-medium bg-navy hover:bg-navy-400 text-white px-3 py-1.5 rounded-full"><i class="fa-solid fa-plus mr-1"></i>Add Account</button>
+        </div>
+        <div id="adminAccountsList" class="divide-y divide-navy-50"></div>
+        <div class="mt-4 pt-4 border-t border-navy-100 grid grid-cols-3 gap-2 text-[11px] text-navy-400">
+          <div><strong class="text-navy block">Principal</strong>Full Access</div>
+          <div><strong class="text-navy block">Accountant</strong>Fees + Dashboard + Students</div>
+          <div><strong class="text-navy block">Teacher</strong>Attendance + Notices</div>
+        </div>
+      </div>
+
+      <div class="bg-white rounded-2xl border border-navy-100 p-5">
+        <h3 class="font-semibold text-navy text-sm mb-3"><i class="fa-solid fa-key text-gold-600 mr-1.5"></i>Change Your Password</h3>
+        <div class="space-y-2">
+          <input id="cpCurrent" type="password" placeholder="Current password" class="w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+          <input id="cpNew" type="password" placeholder="New password" class="w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+          <input id="cpConfirm" type="password" placeholder="Confirm new password" class="w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+          <button id="changePasswordBtn" class="w-full bg-gold-600 hover:bg-gold-400 text-white text-sm font-medium py-2.5 rounded-lg">Update Password</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-navy-100 p-5">
+      <h3 class="font-semibold text-navy text-sm mb-3"><i class="fa-solid fa-clock-rotate-left text-gold-600 mr-1.5"></i>Activity Log <span class="text-navy-400 font-normal text-xs">(last 20 actions)</span></h3>
+      <div id="activityLogList" class="divide-y divide-navy-50 max-h-96 overflow-y-auto"></div>
+    </div>
+  `;
+
+  renderAdminAccountsList();
+  renderActivityLogList();
+
+  document.getElementById("addAdminBtn").addEventListener("click", () => openAdminAccountForm());
+
+  document.getElementById("changePasswordBtn").addEventListener("click", () => {
+    const current = document.getElementById("cpCurrent").value;
+    const next = document.getElementById("cpNew").value;
+    const confirm = document.getElementById("cpConfirm").value;
+    if (current !== currentAdmin.password) { showToast("Current password is incorrect."); return; }
+    if (!next || next.length < 4) { showToast("New password must be at least 4 characters."); return; }
+    if (next !== confirm) { showToast("New password and confirmation do not match."); return; }
+    currentAdmin.password = next;
+    if (currentAdmin.id === "adm_principal" || state.admin.username === currentAdmin.username) state.admin.password = next;
+    logActivity(state, `${currentAdmin.name} changed their password.`);
+    saveState(state);
+    showToast("Password updated.");
+    renderAdminRoles();
+  });
+}
+
+function renderAdminAccountsList() {
+  const wrap = document.getElementById("adminAccountsList");
+  wrap.innerHTML = state.admins.map((a) => `
+    <div class="flex items-center justify-between py-3">
+      <div>
+        <p class="text-sm font-medium text-navy">${escapeHtml(a.name)} ${a.id === currentAdmin.id ? '<span class="text-[10px] text-gold-600 font-semibold">(You)</span>' : ""}</p>
+        <p class="text-xs text-navy-400">@${escapeHtml(a.username)} · ${a.role}</p>
+      </div>
+      <div class="flex gap-1.5">
+        <button data-edit-admin="${a.id}" title="Edit" class="h-8 w-8 rounded-full hover:bg-navy-50 text-navy-400 hover:text-navy"><i class="fa-solid fa-pen text-xs"></i></button>
+        ${state.admins.length > 1 ? `<button data-delete-admin="${a.id}" title="Remove" class="h-8 w-8 rounded-full hover:bg-red-50 text-navy-400 hover:text-red-600"><i class="fa-solid fa-trash text-xs"></i></button>` : ""}
+      </div>
+    </div>
+  `).join("");
+
+  wrap.querySelectorAll("[data-edit-admin]").forEach((b) => b.addEventListener("click", () => openAdminAccountForm(state.admins.find((a) => a.id === b.dataset.editAdmin))));
+  wrap.querySelectorAll("[data-delete-admin]").forEach((b) => b.addEventListener("click", () => {
+    const acc = state.admins.find((a) => a.id === b.dataset.deleteAdmin);
+    if (acc.id === currentAdmin.id) { showToast("You can't remove the account you're logged in as."); return; }
+    openConfirmModal("Remove admin account?", `This will permanently remove the login for ${acc.name} (@${acc.username}).`, () => {
+      state.admins = state.admins.filter((a) => a.id !== acc.id);
+      logActivity(state, `Removed admin account @${acc.username} (${acc.role}).`);
+      saveState(state);
+      showToast("Admin account removed.");
+      renderAdminAccountsList();
+      renderActivityLogList();
+    });
+  }));
+}
+
+function openAdminAccountForm(account) {
+  const isEdit = !!account;
+  openModal(`
+    <h3 class="font-display text-lg font-semibold text-navy mb-4">${isEdit ? "Edit Admin Account" : "New Admin Account"}</h3>
+    <form id="adminAccountForm" class="space-y-3">
+      <div>
+        <label class="text-xs font-medium text-navy-400">Full Name</label>
+        <input required id="aa_name" value="${isEdit ? escapeHtml(account.name) : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div>
+          <label class="text-xs font-medium text-navy-400">Username</label>
+          <input required id="aa_username" value="${isEdit ? escapeHtml(account.username) : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+        </div>
+        <div>
+          <label class="text-xs font-medium text-navy-400">Role</label>
+          <select id="aa_role" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">
+            ${ROLES.map((r) => `<option value="${r}" ${isEdit && account.role === r ? "selected" : ""}>${r}</option>`).join("")}
+          </select>
+        </div>
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">${isEdit ? "Reset Password (leave blank to keep unchanged)" : "Password"}</label>
+        <input ${isEdit ? "" : "required"} id="aa_password" type="text" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button type="button" id="cancelAdminAccountForm" class="px-4 py-2 text-sm rounded-lg border border-navy-100 text-navy hover:bg-cream">Cancel</button>
+        <button type="submit" class="px-4 py-2 text-sm rounded-lg bg-navy hover:bg-navy-400 text-white">${isEdit ? "Save Changes" : "Create Account"}</button>
+      </div>
+    </form>
+  `);
+
+  document.getElementById("cancelAdminAccountForm").addEventListener("click", closeModal);
+  document.getElementById("adminAccountForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = document.getElementById("aa_username").value.trim();
+    const name = document.getElementById("aa_name").value.trim();
+    const role = document.getElementById("aa_role").value;
+    const password = document.getElementById("aa_password").value;
+    const duplicate = state.admins.find((a) => a.username === username && (!isEdit || a.id !== account.id));
+    if (duplicate) { showToast("That username is already in use."); return; }
+
+    if (isEdit) {
+      account.name = name;
+      account.username = username;
+      account.role = role;
+      if (password) account.password = password;
+      logActivity(state, `Updated admin account @${username} (${role}).`);
+    } else {
+      state.admins.push({ id: uid("adm"), username, password, name, role });
+      logActivity(state, `Created new admin account @${username} (${role}).`);
+    }
+    saveState(state);
+    showToast(isEdit ? "Account updated." : "Account created.");
+    closeModal();
+    renderAdminAccountsList();
+    renderActivityLogList();
+  });
+}
+
+function renderActivityLogList() {
+  const wrap = document.getElementById("activityLogList");
+  const log = state.activityLog || [];
+  if (!log.length) {
+    wrap.innerHTML = `<p class="text-sm text-navy-400 py-4 text-center">No activity recorded yet.</p>`;
+    return;
+  }
+  wrap.innerHTML = log.map((entry) => `
+    <div class="py-2.5 text-sm">
+      <p class="text-navy">${escapeHtml(entry.message)}</p>
+      <p class="text-[11px] text-navy-400 mt-0.5">${escapeHtml(entry.actor)} · ${formatDateTime(entry.date)}</p>
+    </div>
+  `).join("");
+}
+
+/* ==================================================================== */
 /*  PUBLIC BANNER CONTROL                                                */
 /* ==================================================================== */
 function renderBanner() {
   const el = document.getElementById("tab-banner");
   el.innerHTML = `
-    <h2 class="font-display text-2xl font-semibold text-navy mb-1">Public Banner Control</h2>
-    <p class="text-sm text-navy-400 mb-6">Manage the scrolling announcement banner shown on the public homepage, and the admissions status.</p>
+    <h2 class="font-display text-2xl font-semibold text-navy mb-1">Website Content</h2>
+    <p class="text-sm text-navy-400 mb-6">Manage everything shown on the public homepage — the scrolling banner, image slider, gallery, testimonials, announcements, and admissions status.</p>
 
     <div class="grid md:grid-cols-[1fr,300px] gap-5">
       <div class="space-y-5">
@@ -1910,6 +3710,33 @@ function renderBanner() {
             <input id="imageBannerUpload" type="file" accept="image/*" multiple class="hidden" />
           </label>
         </div>
+
+        <div class="bg-white rounded-2xl border border-navy-100 p-5">
+          <h3 class="font-semibold text-navy text-sm mb-1">Gallery</h3>
+          <p class="text-xs text-navy-400 mb-3">Photos shown in the public homepage gallery carousel. Add none, and the section stays hidden.</p>
+          <div id="galleryList" class="grid grid-cols-3 sm:grid-cols-4 gap-3 mb-3"></div>
+          <label class="flex items-center justify-center gap-2 border-2 border-dashed border-navy-100 hover:border-gold-300 rounded-lg py-4 text-sm text-navy-400 cursor-pointer transition-colors">
+            <i class="fa-solid fa-images text-gold-600"></i> Upload gallery image(s)
+            <input id="galleryUpload" type="file" accept="image/*" multiple class="hidden" />
+          </label>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-navy-100 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold text-navy text-sm">Testimonials</h3>
+            <button id="addTestimonialBtn" class="text-xs font-medium text-navy bg-navy-50 hover:bg-navy-100 px-3 py-1.5 rounded-full"><i class="fa-solid fa-plus mr-1"></i>Add</button>
+          </div>
+          <div id="testimonialList" class="space-y-2"></div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-navy-100 p-5">
+          <div class="flex items-center justify-between mb-3">
+            <h3 class="font-semibold text-navy text-sm">Events &amp; Notices (Homepage)</h3>
+            <button id="addAnnouncementBtn" class="text-xs font-medium text-navy bg-navy-50 hover:bg-navy-100 px-3 py-1.5 rounded-full"><i class="fa-solid fa-plus mr-1"></i>Add</button>
+          </div>
+          <p class="text-xs text-navy-400 mb-3">Latest announcements shown in the public "Events & Notices" section.</p>
+          <div id="announcementList" class="space-y-2"></div>
+        </div>
       </div>
 
       <div class="bg-white rounded-2xl border border-navy-100 p-5 h-fit">
@@ -1930,6 +3757,33 @@ function renderBanner() {
 
   renderBannerList();
   renderImageBannerList();
+  renderGalleryList();
+  renderTestimonialList();
+  renderAnnouncementList();
+
+  document.getElementById("galleryUpload").addEventListener("change", (e) => {
+    const files = Array.from(e.target.files || []);
+    if (!files.length) return;
+    if (!state.school.gallery) state.school.gallery = [];
+    let pending = files.length;
+    files.forEach((file) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        state.school.gallery.push({ id: uid("gal"), image: reader.result, caption: "" });
+        pending -= 1;
+        if (pending === 0) {
+          saveState(state);
+          renderGalleryList();
+          showToast(files.length > 1 ? "Gallery images added." : "Gallery image added.");
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+    e.target.value = "";
+  });
+
+  document.getElementById("addTestimonialBtn").addEventListener("click", () => openTestimonialForm());
+  document.getElementById("addAnnouncementBtn").addEventListener("click", () => openAnnouncementForm());
 
   document.getElementById("imageBannerUpload").addEventListener("change", (e) => {
     const files = Array.from(e.target.files || []);
@@ -2045,6 +3899,178 @@ function renderImageBannerList() {
       const idx = arr.findIndex((x) => x.id === btn.dataset.moveDown);
       if (idx < arr.length - 1) { [arr[idx + 1], arr[idx]] = [arr[idx], arr[idx + 1]]; saveState(state); renderImageBannerList(); }
     });
+  });
+}
+
+/* -------------------------------------------------------------------------
+   Gallery management
+   ---------------------------------------------------------------------- */
+function renderGalleryList() {
+  const wrap = document.getElementById("galleryList");
+  const items = state.school.gallery || [];
+  if (!items.length) {
+    wrap.innerHTML = `<p class="text-sm text-navy-400 col-span-full">No gallery photos yet — the homepage gallery stays hidden until you add one.</p>`;
+    return;
+  }
+  wrap.innerHTML = items.map((g) => `
+    <div class="relative group rounded-lg overflow-hidden border border-navy-100 aspect-square bg-navy-50">
+      <img src="${g.image}" class="w-full h-full object-cover" />
+      <div class="absolute inset-0 bg-navy/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+        <button data-remove-gal="${g.id}" title="Remove" class="h-7 w-7 rounded-full bg-white/90 text-red-600 text-xs hover:bg-white"><i class="fa-solid fa-trash"></i></button>
+      </div>
+    </div>
+  `).join("");
+  wrap.querySelectorAll("[data-remove-gal]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      state.school.gallery = state.school.gallery.filter((x) => x.id !== btn.dataset.removeGal);
+      saveState(state);
+      renderGalleryList();
+      showToast("Gallery photo removed.");
+    });
+  });
+}
+
+/* -------------------------------------------------------------------------
+   Testimonials management
+   ---------------------------------------------------------------------- */
+function renderTestimonialList() {
+  const wrap = document.getElementById("testimonialList");
+  const items = state.school.testimonials || [];
+  if (!items.length) {
+    wrap.innerHTML = `<p class="text-sm text-navy-400">No testimonials yet.</p>`;
+    return;
+  }
+  wrap.innerHTML = items.map((t) => `
+    <div class="flex items-start justify-between gap-2 border border-navy-100 rounded-lg p-3">
+      <div class="min-w-0">
+        <p class="text-sm font-medium text-navy">${escapeHtml(t.name)} <span class="text-xs text-navy-400 font-normal">— ${escapeHtml(t.role || "")}</span></p>
+        <p class="text-xs text-navy-400 mt-1">${escapeHtml(t.text)}</p>
+      </div>
+      <div class="flex gap-1 shrink-0">
+        <button data-edit-test="${t.id}" class="h-7 w-7 rounded-full hover:bg-navy-50 text-navy-400 hover:text-navy"><i class="fa-solid fa-pen text-xs"></i></button>
+        <button data-del-test="${t.id}" class="h-7 w-7 rounded-full hover:bg-red-50 text-navy-400 hover:text-red-600"><i class="fa-solid fa-trash text-xs"></i></button>
+      </div>
+    </div>
+  `).join("");
+  wrap.querySelectorAll("[data-edit-test]").forEach((b) => b.addEventListener("click", () => openTestimonialForm(state.school.testimonials.find((t) => t.id === b.dataset.editTest))));
+  wrap.querySelectorAll("[data-del-test]").forEach((b) => b.addEventListener("click", () => {
+    state.school.testimonials = state.school.testimonials.filter((t) => t.id !== b.dataset.delTest);
+    saveState(state);
+    renderTestimonialList();
+    showToast("Testimonial removed.");
+  }));
+}
+
+function openTestimonialForm(testimonial) {
+  const isEdit = !!testimonial;
+  openModal(`
+    <h3 class="font-display text-lg font-semibold text-navy mb-4">${isEdit ? "Edit" : "Add"} Testimonial</h3>
+    <form id="testForm" class="space-y-3">
+      <div>
+        <label class="text-xs font-medium text-navy-400">Name</label>
+        <input id="test_name" required value="${isEdit ? escapeHtml(testimonial.name) : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">Role (e.g. Parent, Class 5 / Alumnus)</label>
+        <input id="test_role" value="${isEdit ? escapeHtml(testimonial.role || "") : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">Testimonial</label>
+        <textarea id="test_text" required rows="3" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">${isEdit ? escapeHtml(testimonial.text) : ""}</textarea>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button type="button" id="testCancel" class="px-4 py-2 text-sm rounded-lg border border-navy-100 text-navy hover:bg-cream">Cancel</button>
+        <button type="submit" class="px-4 py-2 text-sm rounded-lg bg-navy hover:bg-navy-400 text-white">${isEdit ? "Save Changes" : "Add"}</button>
+      </div>
+    </form>
+  `, { wide: false });
+  document.getElementById("testCancel").addEventListener("click", closeModal);
+  document.getElementById("testForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById("test_name").value.trim(),
+      role: document.getElementById("test_role").value.trim(),
+      text: document.getElementById("test_text").value.trim()
+    };
+    if (!data.name || !data.text) { showToast("Name and testimonial text are required."); return; }
+    if (isEdit) {
+      Object.assign(testimonial, data);
+    } else {
+      state.school.testimonials.push({ id: uid("test"), photo: "", ...data });
+    }
+    saveState(state);
+    closeModal();
+    renderTestimonialList();
+    showToast(isEdit ? "Testimonial updated." : "Testimonial added.");
+  });
+}
+
+/* -------------------------------------------------------------------------
+   Announcements management (public "Events & Notices")
+   ---------------------------------------------------------------------- */
+function renderAnnouncementList() {
+  const wrap = document.getElementById("announcementList");
+  const items = (state.school.announcements || []).slice().sort((a, b) => new Date(b.date) - new Date(a.date));
+  if (!items.length) {
+    wrap.innerHTML = `<p class="text-sm text-navy-400">No announcements yet.</p>`;
+    return;
+  }
+  wrap.innerHTML = items.map((a) => `
+    <div class="flex items-start justify-between gap-2 border border-navy-100 rounded-lg p-3">
+      <div class="min-w-0">
+        <p class="text-sm font-medium text-navy">${escapeHtml(a.title)}</p>
+        <p class="text-xs text-navy-400 mt-0.5">${formatDate(a.date)}</p>
+        <p class="text-xs text-navy-400 mt-1">${escapeHtml(a.body)}</p>
+      </div>
+      <div class="flex gap-1 shrink-0">
+        <button data-edit-ann="${a.id}" class="h-7 w-7 rounded-full hover:bg-navy-50 text-navy-400 hover:text-navy"><i class="fa-solid fa-pen text-xs"></i></button>
+        <button data-del-ann="${a.id}" class="h-7 w-7 rounded-full hover:bg-red-50 text-navy-400 hover:text-red-600"><i class="fa-solid fa-trash text-xs"></i></button>
+      </div>
+    </div>
+  `).join("");
+  wrap.querySelectorAll("[data-edit-ann]").forEach((b) => b.addEventListener("click", () => openAnnouncementForm(state.school.announcements.find((a) => a.id === b.dataset.editAnn))));
+  wrap.querySelectorAll("[data-del-ann]").forEach((b) => b.addEventListener("click", () => {
+    state.school.announcements = state.school.announcements.filter((a) => a.id !== b.dataset.delAnn);
+    saveState(state);
+    renderAnnouncementList();
+    showToast("Announcement removed.");
+  }));
+}
+
+function openAnnouncementForm(announcement) {
+  const isEdit = !!announcement;
+  openModal(`
+    <h3 class="font-display text-lg font-semibold text-navy mb-4">${isEdit ? "Edit" : "Add"} Announcement</h3>
+    <form id="annForm" class="space-y-3">
+      <div>
+        <label class="text-xs font-medium text-navy-400">Title</label>
+        <input id="ann_title" required value="${isEdit ? escapeHtml(announcement.title) : ""}" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm" />
+      </div>
+      <div>
+        <label class="text-xs font-medium text-navy-400">Details</label>
+        <textarea id="ann_body" required rows="3" class="mt-1 w-full border border-navy-100 rounded-lg px-3 py-2.5 text-sm">${isEdit ? escapeHtml(announcement.body) : ""}</textarea>
+      </div>
+      <div class="flex justify-end gap-2 pt-2">
+        <button type="button" id="annCancel" class="px-4 py-2 text-sm rounded-lg border border-navy-100 text-navy hover:bg-cream">Cancel</button>
+        <button type="submit" class="px-4 py-2 text-sm rounded-lg bg-navy hover:bg-navy-400 text-white">${isEdit ? "Save Changes" : "Add"}</button>
+      </div>
+    </form>
+  `, { wide: false });
+  document.getElementById("annCancel").addEventListener("click", closeModal);
+  document.getElementById("annForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const title = document.getElementById("ann_title").value.trim();
+    const body = document.getElementById("ann_body").value.trim();
+    if (!title || !body) { showToast("Title and details are required."); return; }
+    if (isEdit) {
+      Object.assign(announcement, { title, body });
+    } else {
+      state.school.announcements.push({ id: uid("ann"), title, body, date: new Date().toISOString() });
+    }
+    saveState(state);
+    closeModal();
+    renderAnnouncementList();
+    showToast(isEdit ? "Announcement updated." : "Announcement added.");
   });
 }
 
